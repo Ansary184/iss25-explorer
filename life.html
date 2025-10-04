@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ar" dir="rtl" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-translate="page.title">الحياة على متن محطة الفضاء الدولية - ISS‑25 Explorer</title>
+    <meta name="description" content="استكشف بالتفصيل الحياة اليومية على متن محطة الفضاء الدولية: الروتين اليومي، الطعام، النوم، العمل، والترفيه في بيئة الجاذبية الصغرى." />
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="sat.svg" type="image/x-icon">
+    <style>
+        /* Glassmorphism helpers */
+        
+        .glass {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        /* تنسيق الصور */
+        
+        .content-image {
+            transition: transform 0.3s ease;
+            border-radius: 1rem;
+        }
+        
+        .content-image:hover {
+            transform: scale(1.02);
+        }
+        /* تنسيق القوائم */
+        
+        .feature-list li {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        /* تخصيص التمرير */
+        
+        .scroll-smooth {
+            scroll-behavior: smooth;
+        }
+    </style>
+    <script>
+        // Tailwind config (نفس التكوين)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            50: '#f5f7ff',
+                            100: '#e9edff',
+                            200: '#cfd9ff',
+                            300: '#a6baff',
+                            400: '#7d95ff',
+                            500: '#506cff',
+                            600: '#3a4fe0',
+                            700: '#2939b3',
+                            800: '#1c2a80',
+                            900: '#0f1b57',
+                            950: '#0a133c'
+                        }
+                    },
+                    boxShadow: {
+                        glow: '0 0 40px rgba(99,102,241,.25)'
+                    }
+                }
+            },
+            darkMode: 'class'
+        }
+    </script>
+
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-space-950 to-black text-white selection:bg-indigo-500/40 scroll-smooth">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-30 border-b border-white/10 bg-black/40 glass">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="h-8 w-8 rounded-xl bg-indigo-500/20 flex items-center justify-center shadow-glow">
+                    <!-- simple rocket icon -->
+                    <img src="sat.svg" alt="">
+                </div>
+                <div>
+                    <h1 class="font-semibold tracking-tight">ISS‑25 Explorer</h1>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-white/80">
+                <a href="index.html" class="hover:text-white transition" data-translate="nav.home">الرئيسية</a>
+                <a href="nbk.html" class="hover:text-white transition" data-translate="nav.tracking">اعضاء الفريق</a>
+                <a href="index.html#mapwrap" class="hover:text-white transition" data-i18n="nav_track">التتبّع الحيّ</a>
+                <a href="index.html#cupola" class="hover:text-white transition" data-i18n="nav_cupola">قبة المحطة</a>
+
+
+            </nav>
+            <div class="flex items-center gap-2">
+                <!-- زر تبديل اللغة -->
+                <button id="languageToggle" class="flex items-center gap-2 px-3 py-1 rounded-lg border border-white/20 hover:border-white/40 transition text-sm">
+                    <span id="languageText" data-translate="language.text">EN</span>
+                </button>
+                <!-- Theme toggle -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-16">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-transparent"></div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                    <span data-translate="hero.title1">الحياة على متن</span>
+                    <span class="text-indigo-300" data-translate="hero.title2">محطة الفضاء الدولية</span>
+                </h1>
+                <p class="mt-6 text-xl text-white/80 max-w-3xl mx-auto" data-translate="hero.description">
+                    استكشف بالتفصيل الروتين اليومي، التحديات، والتفاصيل المثيرة للحياة في بيئة الجاذبية الصغرى. من الاستيقاظ حتى النوم، كل شيء مختلف في الفضاء!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table of Contents -->
+    <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <div class="glass border border-white/10 rounded-3xl p-6">
+            <h2 class="text-2xl font-bold mb-4" data-translate="toc.title">محتويات الصفحة</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <a href="#daily-routine" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.dailyRoutine">الروتين اليومي</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.dailyRoutineDesc">كيف يبدأ رواد الفضاء يومهم وينهونه</p>
+                </a>
+                <a href="#sleeping" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.sleeping">النوم في الفضاء</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.sleepingDesc">التحديات والحلول للنوم في انعدام الجاذبية</p>
+                </a>
+                <a href="#food" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.food">الطعام والشراب</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.foodDesc">كيف يتم إعداد وتناول الطعام في الفضاء</p>
+                </a>
+                <a href="#hygiene" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.hygiene">النظافة الشخصية</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.hygieneDesc">الاستحمام، تنظيف الأسنان، واستخدام المرحاض</p>
+                </a>
+                <a href="#exercise" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.exercise">التمارين الرياضية</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.exerciseDesc">لماذا التمرين ضروري وكيف يتم في الفضاء</p>
+                </a>
+                <a href="#leisure" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.leisure">وقت الفراغ والترفيه</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.leisureDesc">كيف يقضي رواد الفضاء وقت فراغهم</p>
+                </a>
+                <a href="#challenges" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.challenges">التحديات النفسية والبدنية</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.challengesDesc">تأثير الحياة في الفضاء على الجسم والعقل</p>
+                </a>
+                <a href="#communication" class="block p-4 rounded-xl border border-white/10 hover:border-indigo-400/50 hover:bg-indigo-500/10 transition">
+                    <h3 class="font-semibold" data-translate="toc.communication">الاتصال بالأرض</h3>
+                    <p class="text-sm text-white/70 mt-1" data-translate="toc.communicationDesc">كيف يتواصل رواد الفضاء مع عائلاتهم وفرق الدعم</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Routine Section -->
+    <section id="daily-routine" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4" data-translate="dailyRoutine.title">الروتين اليومي على متن المحطة</h2>
+                <p class="text-white/80 mb-4" data-translate="dailyRoutine.description">
+                    يتبع رواد الفضاء على متن محطة الفضاء الدولية جدولاً زمنياً صارماً يشبه إلى حد كبير الجدول المتبع على الأرض، مع بعض الاختلافات الرئيسية بسبب بيئة الجاذبية الصغرى.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="dailyRoutine.subtitle">اليوم النموذجي على المحطة:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="dailyRoutine.list1">الاستيقاظ الساعة 6:00 صباحاً (بتوقيت غرينتش)</li>
+                            <li data-translate="dailyRoutine.list2">التمرين الصباحي لمدة ساعتين</li>
+                            <li data-translate="dailyRoutine.list3">فترة العمل الأولى (4-5 ساعات)</li>
+                            <li data-translate="dailyRoutine.list4">استراحة الغداء (ساعة واحدة)</li>
+                            <li data-translate="dailyRoutine.list5">فترة العمل الثانية (4-5 ساعات)</li>
+                            <li data-translate="dailyRoutine.list6">التمرين المسائي (ساعة واحدة)</li>
+                            <li data-translate="dailyRoutine.list7">وقت شخصي واتصال بالأرض</li>
+                            <li data-translate="dailyRoutine.list8">النوم الساعة 9:30 مساءً</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="dailyRoutine.paragraph2">
+                        يعمل الرواد عادة 10-12 ساعة يومياً من الإثنين إلى الجمعة، ونصف يوم يوم السبت. يوم الأحد هو يوم عطلة كاملة يمكنهم فيه الراحة وممارسة الهوايات والاتصال بعائلاتهم.
+                    </p>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                </div>
+                <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                    <img src="Nasa.jpg" alt="رواد فضاء يعملون على متن المحطة" class="w-full h-96 object-cover content-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sleeping Section -->
+    <section id="sleeping" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white/5 rounded-3xl mt-8">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                    </div>
+                    <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                        <img src="Nasa3.jpg" alt="رائد فضاء نائم في كيس نوم" class="w-full h-96 object-cover content-image">
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-3xl font-bold mb-4" data-translate="sleeping.title">النوم في الجاذبية الصغرى</h2>
+                <p class="text-white/80 mb-4" data-translate="sleeping.description">
+                    النوم في الفضاء يختلف تماماً عن النوم على الأرض. بدون الجاذبية، لا يوجد "أعلى" أو "أسفل"، ويمكن للرواد النوم في أي اتجاه يريدون.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="sleeping.subtitle">كيف ينام رواد الفضاء:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="sleeping.list1">يستخدمون أكياس نوم خاصة مثبتة على الجدران</li>
+                            <li data-translate="sleeping.list2">يربطون أنفسهم بأشرطة لمنع الطفو أثناء النوم</li>
+                            <li data-translate="sleeping.list3">يختارون أماكن نومهم في كبائن صغيرة خاصة</li>
+                            <li data-translate="sleeping.list4">يضعون أذرعهم داخل أكياس النوم لمنعها من الطفو</li>
+                            <li data-translate="sleeping.list5">يستخدمون سدادات أذن للحد من الضوضاء</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="sleeping.paragraph2">
+                        يواجه بعض الرواد صعوبة في النوم خلال الأيام الأولى بسبب عدم وجود شروق وغروب للشمس كل 24 ساعة (تشهد المحطة 16 شروقاً وغروباً يومياً). يستخدم البعض منهم أدوية للمساعدة على النوم في البداية.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Section -->
+    <section id="food" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4" data-translate="food.title">الطعام والشراب في الفضاء</h2>
+                <p class="text-white/80 mb-4" data-translate="food.description">
+                    نظام الطعام على متن المحطة الفضائية تطور كثيراً عن الأيام الأولى لرحلات الفضاء. اليوم، يتمتع الرواد بتنوع معقول في وجباتهم، رغم التحديات الفريدة للأكل في الجاذبية الصغرى.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="food.subtitle">خصائص طعام الفضاء:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="food.list1">معظم الأطعمة مجففة أو معالجة للاستدامة</li>
+                            <li data-translate="food.list2">تضاف المياه الساخنة أو الباردة لإعادة التمييه</li>
+                            <li data-translate="food.list3">تستخدم الأطباق المغناطيسية وأوعية خاصة</li>
+                            <li data-translate="food.list4">يتم تثبيت الطعام على المائدة بشرائط لاصقة</li>
+                            <li data-translate="food.list5">تستخدم ماصات خاصة للشرب من أكياس مغلقة</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="food.paragraph2">
+                        يحصل الرواد على وجبات متنوعة تشمل اللحوم والمعكرونة والفواكه والخضروات. كما توجد بهارات سائلة (مثل صلصة الطماطم والخردل) لإضافة نكهة للطعام. يتم شحن الطعام بشكل دوري على متن مركبات الشحن.
+                    </p>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                </div>
+                <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                    <img src="Nasa4.jpg" alt="رائدة فضاء تتناول الطعام" class="w-full h-96 object-cover content-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hygiene Section -->
+    <section id="hygiene" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white/5 rounded-3xl mt-8">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="relative">
+                    <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                    </div>
+                    <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                        <img src="Nasa5.jpg" alt="مرافق النظافة على المحطة" class="w-full h-96 object-cover content-image">
+                    </div>
+                </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <h2 class="text-3xl font-bold mb-4" data-translate="hygiene.title">النظافة الشخصية على المحطة</h2>
+                <p class="text-white/80 mb-4" data-translate="hygiene.description">
+                    الحفاظ على النظافة الشخصية في الفضاء يتطلب حلولاً إبداعية. بدون الجاذبية، لا يمكن للرواد الاستحمام بالطريقة التقليدية، ويجب عليهم التكيف مع طرق بديلة.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="hygiene.subtitle">روتين النظافة اليومي:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="hygiene.list1">يستخدمون مناشف مبللة للاستحمام</li>
+                            <li data-translate="hygiene.list2">يستخدمون شامبو لا يشطف بالماء</li>
+                            <li data-translate="hygiene.list3">يبتلعون معجون الأسنان بعد التنظيف</li>
+                            <li data-translate="hygiene.list4">يستخدمون مراحيض مزودة بأحزمة تثبيت</li>
+                            <li data-translate="hygiene.list5">يتم شفط النفايات بدلاً من استخدام المياه</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="hygiene.paragraph2">
+                        يتم إعادة تدوير حوالي 80% من المياه على المحطة، بما في ذلك البول والعرق. هذه الأنظمة ضرورية للبعثات طويلة الأمد حيث يكون توفير المياه أمراً بالغ الأهمية. يتم تجفيف المناشف المستخدمة وإعادة استخدامها عدة مرات قبل التخلص منها.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exercise Section -->
+    <section id="exercise" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4" data-translate="exercise.title">التمارين الرياضية في الفضاء</h2>
+                <p class="text-white/80 mb-4" data-translate="exercise.description">
+                    التمرين ليس رفاهية على متن المحطة الفضائية، بل هو ضرورة طبية. في الجاذبية الصغرى، يفقد الجسم العظام والعضلات بسرعة إذا لم يتم تحفيزها بالتمارين.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="exercise.subtitle">أجهزة التمرين على المحطة:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="exercise.list1">جهاز الجري (مثبت بأحزمة مرنة)</li>
+                            <li data-translate="exercise.list2">دراجة تمرين ثابتة (بدون مقعد)</li>
+                            <li data-translate="exercise.list3">جهاز رفع الأثقال (باستخدام مقاومة هوائية)</li>
+                            <li data-translate="exercise.list4">أجهزة تمارين المقاومة المتقدمة (ARED)</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="exercise.paragraph2">
+                        يمارس الرواد التمارين لمدة ساعتين على الأقل يومياً للحفاظ على كتلة العظام والعضلات وصحة القلب. بدون هذا الروتين، سيفقدون ما يصل إلى 1-2% من كتلة العظام شهرياً، وهو ما يعادل معدل فقدان العظام لشخص مسن على الأرض في عام كامل.
+                    </p>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                </div>
+                <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                    <img src="Nasa6.jpg" alt="رائد فضاء يمارس التمارين على جهاز الجري" class="w-full h-96 object-cover content-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leisure Section -->
+    <section id="leisure" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div class="relative">
+                <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                </div>
+                <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                    <img src="Nasa7.jpg" alt="رائد فضاء يستمتع بوقت الفراغ" class="w-full h-96 object-cover content-image">
+                </div>
+            </div>
+            <div>
+                <h2 class="text-3xl font-bold mb-4" data-translate="leisure.title">وقت الفراغ والترفيه</h2>
+                <p class="text-white/80 mb-4" data-translate="leisure.description">
+                    رغم الجدول المزدحم، يحصل رواد الفضاء على وقت للراحة والترفيه. يقضون هذا الوقت في أنشطة متنوعة تساعدهم على الاسترخاء والاتصال بالأرض.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="leisure.subtitle">أنشطة الترفيه الشائعة:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="leisure.list1">التحديق في الأرض من نوافذ المحطة</li>
+                            <li data-translate="leisure.list2">التصوير الفوتوغرافي للأرض والفضاء</li>
+                            <li data-translate="leisure.list3">القراءة (كتب إلكترونية أو ورقية)</li>
+                            <li data-translate="leisure.list4">مشاهدة الأفلام والمسلسلات</li>
+                            <li data-translate="leisure.list5">الاستماع إلى الموسيقى</li>
+                            <li data-translate="leisure.list6">ممارسة الهوايات مثل العزف على الآلات</li>
+                            <li data-translate="leisure.list7">التواصل مع العائلة والأصدقاء على الأرض</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="leisure.paragraph2">
+                        أحد أكثر الأنشطة شعبية بين الرواد هو مراقبة الأرض من نوافذ المحطة، خاصة قبة المراقبة (Cupola) التي توفر منظراً بانورامياً مذهلاً. كثير من الرواد يصبحون مصورين محترفين نتيجة قضاء ساعات في تصوير الأرض من الفضاء.
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Communication Section -->
+    <section id="communication" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-4" data-translate="communication.title">الاتصال بالأرض</h2>
+                <p class="text-white/80 mb-4" data-translate="communication.description">
+                    يظل رواد الفضاء على اتصال دائم بالأرض عبر أنظمة اتصال متطورة. هذا الاتصال ضروري للعمل والدعم النفسي على حد سواء.
+                </p>
+                <div class="space-y-4">
+                    <div class="glass border border-white/10 rounded-2xl p-4">
+                        <h3 class="font-semibold text-indigo-300" data-translate="communication.subtitle">طرق الاتصال:</h3>
+                        <ul class="feature-list mt-2 text-white/80" id="ddd">
+                            <li data-translate="communication.list1">مكالمات فيديو أسبوعية مع العائلات</li>
+                            <li data-translate="communication.list2">بريد إلكتروني ورسائل فورية</li>
+                            <li data-translate="communication.list3">مؤتمرات فيديو مع فرق الدعم والمختبرات</li>
+                            <li data-translate="communication.list4">بث مباشر للأحداث والأنشطة الخاصة</li>
+                            <li data-translate="communication.list5">اتصالات طارئة عبر قنوات مخصصة</li>
+                        </ul>
+                    </div>
+                    <p class="text-white/80" data-translate="communication.paragraph2">
+                        يتم الاتصال عبر شبكة الأقمار الصناعية لتتبع وترحيل البيانات (TDRS) التابعة لناسا. عندما تكون المحطة خارج نطاق هذه الأقمار، يتم تخزين الرسائل وإرسالها عند العودة إلى النطاق. هناك تأخير بسيط في الاتصالات (بضع ثوانٍ) بسبب المسافة.
+                    </p>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute -inset-6 bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-transparent rounded-[2rem] blur-2xl">
+                </div>
+                <div class="relative glass border border-white/10 rounded-3xl overflow-hidden">
+                    <img src="Nasa8.jpg" alt="رائد فضاء يتصل بالأرض" class="w-full h-96 object-cover content-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section id="challenges" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white/5 rounded-3xl mt-8">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold" data-translate="challenges.title">التحديات النفسية والبدنية</h2>
+            <p class="text-white/80 mt-2 max-w-3xl mx-auto" data-translate="challenges.description">
+                الحياة في الفضاء لا تخلو من التحديات. يواجه الرواد تغيرات فسيولوجية ونفسية تحتاج إلى تكيف مستمر ودعم من فرق الأرض.
+            </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass border border-white/10 rounded-2xl p-6">
+                <h3 class="font-semibold text-xl mb-3 text-indigo-300" data-translate="challenges.physicalTitle">التحديات البدنية</h3>
+                <ul class="space-y-3 text-white/80">
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.physical1.strong">مرض الفضاء:</strong> <span data-translate="challenges.physical1.text">دوار يحدث خلال الأيام الأولى بسبب التكيف مع انعدام الجاذبية</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.physical2.strong">فقدان العظام والعضلات:</strong> <span data-translate="challenges.physical2.text">يمكن أن يصل إلى 1-2% من كتلة العظام شهرياً</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.physical3.strong">تغيرات في الرؤية:</strong> <span data-translate="challenges.physical3.text">بسبب تغير توزيع السوائل في الجسم</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.physical4.strong">ضعف الجهاز المناعي:</strong> <span data-translate="challenges.physical4.text">نتيجة الإشعاع والتغيرات الفسيولوجية</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.physical5.strong">اضطرابات النوم:</strong> <span data-translate="challenges.physical5.text">بسبب عدم انتظام دورة النهار والليل</span></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="glass border border-white/10 rounded-2xl p-6">
+                <h3 class="font-semibold text-xl mb-3 text-indigo-300" data-translate="challenges.psychologicalTitle">التحديات النفسية</h3>
+                <ul class="space-y-3 text-white/80">
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.psychological1.strong">العزلة والوحدة:</strong> <span data-translate="challenges.psychological1.text">البعد عن العائلة والأصدقاء لفترات طويلة</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.psychological2.strong">الاكتئاب والقلق:</strong> <span data-translate="challenges.psychological2.text">نتيجة الضغوط النفسية والبدنية</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.psychological3.strong">التوتر بين أفراد الطاقم:</strong> <span data-translate="challenges.psychological3.text">نتيجة العيش في مساحة محدودة</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.psychological4.strong">الملل والروتين:</strong> <span data-translate="challenges.psychological4.text">بسبب تكرار المهام اليومية</span></span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-400 mr-2">•</span>
+                        <span><strong data-translate="challenges.psychological5.strong">ضغوط العمل:</strong> <span data-translate="challenges.psychological5.text">نتيجة المسؤوليات الكبيرة والمهام المعقدة</span></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-8 glass border border-white/10 rounded-2xl p-6">
+            <h3 class="font-semibold text-xl mb-3 text-indigo-300" data-translate="challenges.copingTitle">استراتيجيات المواجهة</h3>
+            <p class="text-white/80 mb-4" data-translate="challenges.copingDescription">
+                لتخفيف هذه التحديات، تتبع ناسا ووكالات الفضاء الأخرى بروتوكولات دعم متعددة:
+            </p>
+            <div class="grid md:grid-cols-2 gap-4">
+                <ul class="feature-list text-white/80">
+                    <li data-translate="challenges.copingList1">اتصالات منتظمة مع العائلات والأصدقاء</li>
+                    <li data-translate="challenges.copingList2">دعم نفسي من فرق متخصصة على الأرض</li>
+                    <li data-translate="challenges.copingList3">أنشطة ترفيهية جماعية لتعزيز التماسك</li>
+                </ul>
+                <ul class="feature-list text-white/80">
+                    <li data-translate="challenges.copingList4">مراقبة طبية مستمرة من قبل أطباء على الأرض</li>
+                    <li data-translate="challenges.copingList5">روتين تمارين صارم للحفاظ على الصحة البدنية</li>
+                    <li data-translate="challenges.copingList6">توفير طعام متنوع ومستساغ</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-black/40 mt-16 py-8">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="font-semibold mb-4" data-translate="footer.title">ISS‑25 Explorer</h3>
+                    <p class="text-white/70 text-sm" data-translate="footer.description">
+                        مشروع تعليمي يهدف إلى تقديم معلومات دقيقة وشيقة عن محطة الفضاء الدولية والحياة على متنها.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4" data-translate="footer.linksTitle">روابط سريعة</h3>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a href="iss.html" class="hover:text-white transition" data-translate="nav.home">الرئيسية</a></li>
+                        <li><a href="iss.html#mapwrap" class="hover:text-white transition" data-translate="nav.tracking">التتبّع الحيّ</a></li>
+                        <li><a href="iss.html#timeline" class="hover:text-white transition" data-translate="nav.timeline">الخط الزمني</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4" data-translate="footer.resourcesTitle">مصادر إضافية</h3>
+                    <ul class="space-y-2 text-sm text-white/70">
+                        <li><a href="https://www.nasa.gov" class="hover:text-white transition">NASA</a></li>
+                        <li><a href="https://www.esa.int" class="hover:text-white transition">ESA</a></li>
+                        <li><a href="https://www.roscosmos.ru" class="hover:text-white transition">Roscosmos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language toggle functionality
+        const languageToggle = document.getElementById('languageToggle');
+        const languageText = document.getElementById('languageText');
+        const languageIcon = document.getElementById('languageIcon');
+        
+        let currentLanguage = 'ar';
+        
+        // ترجمة المحتوى
+        const translations = {
+            ar: {
+                // Header & Navigation
+                'language.text': 'EN',
+                'nav.home': 'الرئيسية',
+                'nav.tracking': 'اعضاء الفريق',
+                'nav.timeline': 'الخط الزمني',
+                
+                // Hero Section
+                'hero.title1': 'الحياة على متن',
+                'hero.title2': 'محطة الفضاء الدولية',
+                'hero.description': 'استكشف بالتفصيل الروتين اليومي، التحديات، والتفاصيل المثيرة للحياة في بيئة الجاذبية الصغرى. من الاستيقاظ حتى النوم، كل شيء مختلف في الفضاء!',
+                
+                // Table of Contents
+                'toc.title': 'محتويات الصفحة',
+                'toc.dailyRoutine': 'الروتين اليومي',
+                'toc.dailyRoutineDesc': 'كيف يبدأ رواد الفضاء يومهم وينهونه',
+                'toc.sleeping': 'النوم في الفضاء',
+                'toc.sleepingDesc': 'التحديات والحلول للنوم في انعدام الجاذبية',
+                'toc.food': 'الطعام والشراب',
+                'toc.foodDesc': 'كيف يتم إعداد وتناول الطعام في الفضاء',
+                'toc.hygiene': 'النظافة الشخصية',
+                'toc.hygieneDesc': 'الاستحمام، تنظيف الأسنان، واستخدام المرحاض',
+                'toc.exercise': 'التمارين الرياضية',
+                'toc.exerciseDesc': 'لماذا التمرين ضروري وكيف يتم في الفضاء',
+                'toc.leisure': 'وقت الفراغ والترفيه',
+                'toc.leisureDesc': 'كيف يقضي رواد الفضاء وقت فراغهم',
+                'toc.challenges': 'التحديات النفسية والبدنية',
+                'toc.challengesDesc': 'تأثير الحياة في الفضاء على الجسم والعقل',
+                'toc.communication': 'الاتصال بالأرض',
+                'toc.communicationDesc': 'كيف يتواصل رواد الفضاء مع عائلاتهم وفرق الدعم',
+                
+                // Daily Routine Section
+                'dailyRoutine.title': 'الروتين اليومي على متن المحطة',
+                'dailyRoutine.description': 'يتبع رواد الفضاء على متن محطة الفضاء الدولية جدولاً زمنياً صارماً يشبه إلى حد كبير الجدول المتبع على الأرض، مع بعض الاختلافات الرئيسية بسبب بيئة الجاذبية الصغرى.',
+                'dailyRoutine.subtitle': 'اليوم النموذجي على المحطة:',
+                'dailyRoutine.list1': 'الاستيقاظ الساعة 6:00 صباحاً (بتوقيت غرينتش)',
+                'dailyRoutine.list2': 'التمرين الصباحي لمدة ساعتين',
+                'dailyRoutine.list3': 'فترة العمل الأولى (4-5 ساعات)',
+                'dailyRoutine.list4': 'استراحة الغداء (ساعة واحدة)',
+                'dailyRoutine.list5': 'فترة العمل الثانية (4-5 ساعات)',
+                'dailyRoutine.list6': 'التمرين المسائي (ساعة واحدة)',
+                'dailyRoutine.list7': 'وقت شخصي واتصال بالأرض',
+                'dailyRoutine.list8': 'النوم الساعة 9:30 مساءً',
+                'dailyRoutine.paragraph2': 'يعمل الرواد عادة 10-12 ساعة يومياً من الإثنين إلى الجمعة، ونصف يوم يوم السبت. يوم الأحد هو يوم عطلة كاملة يمكنهم فيه الراحة وممارسة الهوايات والاتصال بعائلاتهم.',
+                
+                // Sleeping Section
+                'sleeping.title': 'النوم في الجاذبية الصغرى',
+                'sleeping.description': 'النوم في الفضاء يختلف تماماً عن النوم على الأرض. بدون الجاذبية، لا يوجد "أعلى" أو "أسفل"، ويمكن للرواد النوم في أي اتجاه يريدون.',
+                'sleeping.subtitle': 'كيف ينام رواد الفضاء:',
+                'sleeping.list1': 'يستخدمون أكياس نوم خاصة مثبتة على الجدران',
+                'sleeping.list2': 'يربطون أنفسهم بأشرطة لمنع الطفو أثناء النوم',
+                'sleeping.list3': 'يختارون أماكن نومهم في كبائن صغيرة خاصة',
+                'sleeping.list4': 'يضعون أذرعهم داخل أكياس النوم لمنعها من الطفو',
+                'sleeping.list5': 'يستخدمون سدادات أذن للحد من الضوضاء',
+                'sleeping.paragraph2': 'يواجه بعض الرواد صعوبة في النوم خلال الأيام الأولى بسبب عدم وجود شروق وغروب للشمس كل 24 ساعة (تشهد المحطة 16 شروقاً وغروباً يومياً). يستخدم البعض منهم أدوية للمساعدة على النوم في البداية.',
+                
+                // Food Section
+                'food.title': 'الطعام والشراب في الفضاء',
+                'food.description': 'نظام الطعام على متن المحطة الفضائية تطور كثيراً عن الأيام الأولى لرحلات الفضاء. اليوم، يتمتع الرواد بتنوع معقول في وجباتهم، رغم التحديات الفريدة للأكل في الجاذبية الصغرى.',
+                'food.subtitle': 'خصائص طعام الفضاء:',
+                'food.list1': 'معظم الأطعمة مجففة أو معالجة للاستدامة',
+                'food.list2': 'تضاف المياه الساخنة أو الباردة لإعادة التمييه',
+                'food.list3': 'تستخدم الأطباق المغناطيسية وأوعية خاصة',
+                'food.list4': 'يتم تثبيت الطعام على المائدة بشرائط لاصقة',
+                'food.list5': 'تستخدم ماصات خاصة للشرب من أكياس مغلقة',
+                'food.paragraph2': 'يحصل الرواد على وجبات متنوعة تشمل اللحوم والمعكرونة والفواكه والخضروات. كما توجد بهارات سائلة (مثل صلصة الطماطم والخردل) لإضافة نكهة للطعام. يتم شحن الطعام بشكل دوري على متن مركبات الشحن.',
+                
+                // Hygiene Section
+                'hygiene.title': 'النظافة الشخصية على المحطة',
+                'hygiene.description': 'الحفاظ على النظافة الشخصية في الفضاء يتطلب حلولاً إبداعية. بدون الجاذبية، لا يمكن للرواد الاستحمام بالطريقة التقليدية، ويجب عليهم التكيف مع طرق بديلة.',
+                'hygiene.subtitle': 'روتين النظافة اليومي:',
+                'hygiene.list1': 'يستخدمون مناشف مبللة للاستحمام',
+                'hygiene.list2': 'يستخدمون شامبو لا يشطف بالماء',
+                'hygiene.list3': 'يبتلعون معجون الأسنان بعد التنظيف',
+                'hygiene.list4': 'يستخدمون مراحيض مزودة بأحزمة تثبيت',
+                'hygiene.list5': 'يتم شفط النفايات بدلاً من استخدام المياه',
+                'hygiene.paragraph2': 'يتم إعادة تدوير حوالي 80% من المياه على المحطة، بما في ذلك البول والعرق. هذه الأنظمة ضرورية للبعثات طويلة الأمد حيث يكون توفير المياه أمراً بالغ الأهمية. يتم تجفيف المناشف المستخدمة وإعادة استخدامها عدة مرات قبل التخلص منها.',
+                
+                // Exercise Section
+                'exercise.title': 'التمارين الرياضية في الفضاء',
+                'exercise.description': 'التمرين ليس رفاهية على متن المحطة الفضائية، بل هو ضرورة طبية. في الجاذبية الصغرى، يفقد الجسم العظام والعضلات بسرعة إذا لم يتم تحفيزها بالتمارين.',
+                'exercise.subtitle': 'أجهزة التمرين على المحطة:',
+                'exercise.list1': 'جهاز الجري (مثبت بأحزمة مرنة)',
+                'exercise.list2': 'دراجة تمرين ثابتة (بدون مقعد)',
+                'exercise.list3': 'جهاز رفع الأثقال (باستخدام مقاومة هوائية)',
+                'exercise.list4': 'أجهزة تمارين المقاومة المتقدمة (ARED)',
+                'exercise.paragraph2': 'يمارس الرواد التمارين لمدة ساعتين على الأقل يومياً للحفاظ على كتلة العظام والعضلات وصحة القلب. بدون هذا الروتين، سيفقدون ما يصل إلى 1-2% من كتلة العظام شهرياً، وهو ما يعادل معدل فقدان العظام لشخص مسن على الأرض في عام كامل.',
+                
+                // Leisure Section
+                'leisure.title': 'وقت الفراغ والترفيه',
+                'leisure.description': 'رغم الجدول المزدحم، يحصل رواد الفضاء على وقت للراحة والترفيه. يقضون هذا الوقت في أنشطة متنوعة تساعدهم على الاسترخاء والاتصال بالأرض.',
+                'leisure.subtitle': 'أنشطة الترفيه الشائعة:',
+                'leisure.list1': 'التحديق في الأرض من نوافذ المحطة',
+                'leisure.list2': 'التصوير الفوتوغرافي للأرض والفضاء',
+                'leisure.list3': 'القراءة (كتب إلكترونية أو ورقية)',
+                'leisure.list4': 'مشاهدة الأفلام والمسلسلات',
+                'leisure.list5': 'الاستماع إلى الموسيقى',
+                'leisure.list6': 'ممارسة الهوايات مثل العزف على الآلات',
+                'leisure.list7': 'التواصل مع العائلة والأصدقاء على الأرض',
+                'leisure.paragraph2': 'أحد أكثر الأنشطة شعبية بين الرواد هو مراقبة الأرض من نوافذ المحطة، خاصة قبة المراقبة (Cupola) التي توفر منظراً بانورامياً مذهلاً. كثير من الرواد يصبحون مصورين محترفين نتيجة قضاء ساعات في تصوير الأرض من الفضاء.',
+                
+                // Communication Section
+                'communication.title': 'الاتصال بالأرض',
+                'communication.description': 'يظل رواد الفضاء على اتصال دائم بالأرض عبر أنظمة اتصال متطورة. هذا الاتصال ضروري للعمل والدعم النفسي على حد سواء.',
+                'communication.subtitle': 'طرق الاتصال:',
+                'communication.list1': 'مكالمات فيديو أسبوعية مع العائلات',
+                'communication.list2': 'بريد إلكتروني ورسائل فورية',
+                'communication.list3': 'مؤتمرات فيديو مع فرق الدعم والمختبرات',
+                'communication.list4': 'بث مباشر للأحداث والأنشطة الخاصة',
+                'communication.list5': 'اتصالات طارئة عبر قنوات مخصصة',
+                'communication.paragraph2': 'يتم الاتصال عبر شبكة الأقمار الصناعية لتتبع وترحيل البيانات (TDRS) التابعة لناسا. عندما تكون المحطة خارج نطاق هذه الأقمار، يتم تخزين الرسائل وإرسالها عند العودة إلى النطاق. هناك تأخير بسيط في الاتصالات (بضع ثوانٍ) بسبب المسافة.',
+                
+                // Challenges Section
+                'challenges.title': 'التحديات النفسية والبدنية',
+                'challenges.description': 'الحياة في الفضاء لا تخلو من التحديات. يواجه الرواد تغيرات فسيولوجية ونفسية تحتاج إلى تكيف مستمر ودعم من فرق الأرض.',
+                'challenges.physicalTitle': 'التحديات البدنية',
+                'challenges.physical1.strong': 'مرض الفضاء:',
+                'challenges.physical1.text': 'دوار يحدث خلال الأيام الأولى بسبب التكيف مع انعدام الجاذبية',
+                'challenges.physical2.strong': 'فقدان العظام والعضلات:',
+                'challenges.physical2.text': 'يمكن أن يصل إلى 1-2% من كتلة العظام شهرياً',
+                'challenges.physical3.strong': 'تغيرات في الرؤية:',
+                'challenges.physical3.text': 'بسبب تغير توزيع السوائل في الجسم',
+                'challenges.physical4.strong': 'ضعف الجهاز المناعي:',
+                'challenges.physical4.text': 'نتيجة الإشعاع والتغيرات الفسيولوجية',
+                'challenges.physical5.strong': 'اضطرابات النوم:',
+                'challenges.physical5.text': 'بسبب عدم انتظام دورة النهار والليل',
+                'challenges.psychologicalTitle': 'التحديات النفسية',
+                'challenges.psychological1.strong': 'العزلة والوحدة:',
+                'challenges.psychological1.text': 'البعد عن العائلة والأصدقاء لفترات طويلة',
+                'challenges.psychological2.strong': 'الاكتئاب والقلق:',
+                'challenges.psychological2.text': 'نتيجة الضغوط النفسية والبدنية',
+                'challenges.psychological3.strong': 'التوتر بين أفراد الطاقم:',
+                'challenges.psychological3.text': 'نتيجة العيش في مساحة محدودة',
+                'challenges.psychological4.strong': 'الملل والروتين:',
+                'challenges.psychological4.text': 'بسبب تكرار المهام اليومية',
+                'challenges.psychological5.strong': 'ضغوط العمل:',
+                'challenges.psychological5.text': 'نتيجة المسؤوليات الكبيرة والمهام المعقدة',
+                'challenges.copingTitle': 'استراتيجيات المواجهة',
+                'challenges.copingDescription': 'لتخفيف هذه التحديات، تتبع ناسا ووكالات الفضاء الأخرى بروتوكولات دعم متعددة:',
+                'challenges.copingList1': 'اتصالات منتظمة مع العائلات والأصدقاء',
+                'challenges.copingList2': 'دعم نفسي من فرق متخصصة على الأرض',
+                'challenges.copingList3': 'أنشطة ترفيهية جماعية لتعزيز التماسك',
+                'challenges.copingList4': 'مراقبة طبية مستمرة من قبل أطباء على الأرض',
+                'challenges.copingList5': 'روتين تمارين صارم للحفاظ على الصحة البدنية',
+                'challenges.copingList6': 'توفير طعام متنوع ومستساغ',
+                
+                // Footer
+                'footer.title': 'ISS‑25 Explorer',
+                'footer.description': 'مشروع تعليمي يهدف إلى تقديم معلومات دقيقة وشيقة عن محطة الفضاء الدولية والحياة على متنها.',
+                'footer.linksTitle': 'روابط سريعة',
+                'footer.resourcesTitle': 'مصادر إضافية'
+            },
+            en: {
+                // Header & Navigation
+                'language.text': 'AR',
+                'nav.home': 'Home',
+                'nav.tracking': 'Team Members',
+                'nav.timeline': 'Timeline',
+                
+                // Hero Section
+                'hero.title1': 'Life on Board the',
+                'hero.title2': 'International Space Station',
+                'hero.description': 'Explore in detail the daily routine, challenges, and exciting details of life in a microgravity environment. From waking up to sleeping, everything is different in space!',
+                
+                // Table of Contents
+                'toc.title': 'Page Contents',
+                'toc.dailyRoutine': 'Daily Routine',
+                'toc.dailyRoutineDesc': 'How astronauts start and end their day',
+                'toc.sleeping': 'Sleeping in Space',
+                'toc.sleepingDesc': 'Challenges and solutions for sleeping in zero gravity',
+                'toc.food': 'Food and Drink',
+                'toc.foodDesc': 'How food is prepared and consumed in space',
+                'toc.hygiene': 'Personal Hygiene',
+                'toc.hygieneDesc': 'Bathing, brushing teeth, and using the toilet',
+                'toc.exercise': 'Physical Exercise',
+                'toc.exerciseDesc': 'Why exercise is essential and how it\'s done in space',
+                'toc.leisure': 'Leisure Time and Entertainment',
+                'toc.leisureDesc': 'How astronauts spend their free time',
+                'toc.challenges': 'Psychological and Physical Challenges',
+                'toc.challengesDesc': 'The impact of life in space on body and mind',
+                'toc.communication': 'Communication with Earth',
+                'toc.communicationDesc': 'How astronauts communicate with their families and support teams',
+                
+                // Daily Routine Section
+                'dailyRoutine.title': 'Daily Routine on the Station',
+                'dailyRoutine.description': 'Astronauts aboard the International Space Station follow a strict schedule that closely resembles the schedule followed on Earth, with some key differences due to the microgravity environment.',
+                'dailyRoutine.subtitle': 'Typical Day on the Station:',
+                'dailyRoutine.list1': 'Wake up at 6:00 AM (GMT)',
+                'dailyRoutine.list2': 'Morning exercise for two hours',
+                'dailyRoutine.list3': 'First work period (4-5 hours)',
+                'dailyRoutine.list4': 'Lunch break (one hour)',
+                'dailyRoutine.list5': 'Second work period (4-5 hours)',
+                'dailyRoutine.list6': 'Evening exercise (one hour)',
+                'dailyRoutine.list7': 'Personal time and communication with Earth',
+                'dailyRoutine.list8': 'Sleep at 9:30 PM',
+                'dailyRoutine.paragraph2': 'Astronauts typically work 10-12 hours daily from Monday to Friday, and a half day on Saturday. Sunday is a full day off where they can rest, pursue hobbies, and contact their families.',
+                
+                // Sleeping Section
+                'sleeping.title': 'Sleeping in Microgravity',
+                'sleeping.description': 'Sleeping in space is completely different from sleeping on Earth. Without gravity, there is no "up" or "down," and astronauts can sleep in any direction they want.',
+                'sleeping.subtitle': 'How Astronauts Sleep:',
+                'sleeping.list1': 'They use special sleeping bags attached to walls',
+                'sleeping.list2': 'They strap themselves in to prevent floating while sleeping',
+                'sleeping.list3': 'They choose their sleeping spots in small private cabins',
+                'sleeping.list4': 'They place their arms inside sleeping bags to prevent them from floating',
+                'sleeping.list5': 'They use earplugs to reduce noise',
+                'sleeping.paragraph2': 'Some astronauts have difficulty sleeping during the first days due to the absence of sunrise and sunset every 24 hours (the station experiences 16 sunrises and sunsets daily). Some of them use medication to help them sleep initially.',
+                
+                // Food Section
+                'food.title': 'Food and Drink in Space',
+                'food.description': 'The food system on the space station has evolved significantly from the early days of space travel. Today, astronauts enjoy reasonable variety in their meals, despite the unique challenges of eating in microgravity.',
+                'food.subtitle': 'Characteristics of Space Food:',
+                'food.list1': 'Most foods are dehydrated or processed for sustainability',
+                'food.list2': 'Hot or cold water is added for rehydration',
+                'food.list3': 'Magnetic plates and special containers are used',
+                'food.list4': 'Food is secured to the table with adhesive strips',
+                'food.list5': 'Special straws are used for drinking from sealed bags',
+                'food.paragraph2': 'Astronauts receive varied meals including meats, pasta, fruits, and vegetables. There are also liquid condiments (such as tomato sauce and mustard) to add flavor to food. Food is periodically shipped aboard cargo vehicles.',
+                
+                // Hygiene Section
+                'hygiene.title': 'Personal Hygiene on the Station',
+                'hygiene.description': 'Maintaining personal hygiene in space requires creative solutions. Without gravity, astronauts cannot shower in the traditional way and must adapt to alternative methods.',
+                'hygiene.subtitle': 'Daily Hygiene Routine:',
+                'hygiene.list1': 'They use wet wipes for bathing',
+                'hygiene.list2': 'They use no-rinse shampoo',
+                'hygiene.list3': 'They swallow toothpaste after brushing',
+                'hygiene.list4': 'They use toilets equipped with restraint straps',
+                'hygiene.list5': 'Waste is suctioned instead of using water',
+                'hygiene.paragraph2': 'About 80% of water is recycled on the station, including urine and sweat. These systems are essential for long-duration missions where water conservation is critical. Used towels are dried and reused several times before disposal.',
+                
+                // Exercise Section
+                'exercise.title': 'Physical Exercise in Space',
+                'exercise.description': 'Exercise is not a luxury on the space station, but a medical necessity. In microgravity, the body loses bone and muscle mass rapidly if not stimulated by exercise.',
+                'exercise.subtitle': 'Exercise Equipment on the Station:',
+                'exercise.list1': 'Treadmill (secured with elastic straps)',
+                'exercise.list2': 'Stationary bicycle (without a seat)',
+                'exercise.list3': 'Weightlifting device (using air resistance)',
+                'exercise.list4': 'Advanced Resistive Exercise Device (ARED)',
+                'exercise.paragraph2': 'Astronauts exercise for at least two hours daily to maintain bone and muscle mass and heart health. Without this routine, they would lose up to 1-2% of bone mass monthly, equivalent to the bone loss rate of an elderly person on Earth in a full year.',
+                
+                // Leisure Section
+                'leisure.title': 'Leisure Time and Entertainment',
+                'leisure.description': 'Despite the busy schedule, astronauts get time for rest and entertainment. They spend this time on various activities that help them relax and connect with Earth.',
+                'leisure.subtitle': 'Common Leisure Activities:',
+                'leisure.list1': 'Gazing at Earth from station windows',
+                'leisure.list2': 'Photographing Earth and space',
+                'leisure.list3': 'Reading (e-books or paper books)',
+                'leisure.list4': 'Watching movies and TV series',
+                'leisure.list5': 'Listening to music',
+                'leisure.list6': 'Pursuing hobbies like playing instruments',
+                'leisure.list7': 'Communicating with family and friends on Earth',
+                'leisure.paragraph2': 'One of the most popular activities among astronauts is observing Earth from station windows, especially the Cupola observation module which provides a stunning panoramic view. Many astronauts become professional photographers as a result of spending hours photographing Earth from space.',
+                
+                // Communication Section
+                'communication.title': 'Communication with Earth',
+                'communication.description': 'Astronauts remain in constant contact with Earth through advanced communication systems. This communication is essential for both work and psychological support.',
+                'communication.subtitle': 'Communication Methods:',
+                'communication.list1': 'Weekly video calls with families',
+                'communication.list2': 'Email and instant messaging',
+                'communication.list3': 'Video conferences with support teams and laboratories',
+                'communication.list4': 'Live broadcasts of special events and activities',
+                'communication.list5': 'Emergency communications via dedicated channels',
+                'communication.paragraph2': 'Communication is done through NASA\'s Tracking and Data Relay Satellite (TDRS) network. When the station is out of range of these satellites, messages are stored and sent when back in range. There is a slight delay in communications (a few seconds) due to distance.',
+                
+                // Challenges Section
+                'challenges.title': 'Psychological and Physical Challenges',
+                'challenges.description': 'Life in space is not without challenges. Astronauts face physiological and psychological changes that require continuous adaptation and support from Earth teams.',
+                'challenges.physicalTitle': 'Physical Challenges',
+                'challenges.physical1.strong': 'Space sickness:',
+                'challenges.physical1.text': 'Dizziness occurring during the first days due to adaptation to zero gravity',
+                'challenges.physical2.strong': 'Bone and muscle loss:',
+                'challenges.physical2.text': 'Can reach 1-2% of bone mass monthly',
+                'challenges.physical3.strong': 'Vision changes:',
+                'challenges.physical3.text': 'Due to altered fluid distribution in the body',
+                'challenges.physical4.strong': 'Weakened immune system:',
+                'challenges.physical4.text': 'Due to radiation and physiological changes',
+                'challenges.physical5.strong': 'Sleep disorders:',
+                'challenges.physical5.text': 'Due to irregular day-night cycle',
+                'challenges.psychologicalTitle': 'Psychological Challenges',
+                'challenges.psychological1.strong': 'Isolation and loneliness:',
+                'challenges.psychological1.text': 'Being away from family and friends for long periods',
+                'challenges.psychological2.strong': 'Depression and anxiety:',
+                'challenges.psychological2.text': 'Resulting from psychological and physical pressures',
+                'challenges.psychological3.strong': 'Tension among crew members:',
+                'challenges.psychological3.text': 'Resulting from living in limited space',
+                'challenges.psychological4.strong': 'Boredom and routine:',
+                'challenges.psychological4.text': 'Due to repetition of daily tasks',
+                'challenges.psychological5.strong': 'Work pressures:',
+                'challenges.psychological5.text': 'Due to significant responsibilities and complex tasks',
+                'challenges.copingTitle': 'Coping Strategies',
+                'challenges.copingDescription': 'To mitigate these challenges, NASA and other space agencies follow multiple support protocols:',
+                'challenges.copingList1': 'Regular communication with families and friends',
+                'challenges.copingList2': 'Psychological support from specialized teams on Earth',
+                'challenges.copingList3': 'Group recreational activities to enhance cohesion',
+                'challenges.copingList4': 'Continuous medical monitoring by doctors on Earth',
+                'challenges.copingList5': 'Strict exercise routine to maintain physical health',
+                'challenges.copingList6': 'Providing varied and palatable food',
+                
+                // Footer
+                'footer.title': 'ISS‑25 Explorer',
+                'footer.description': 'An educational project aimed at providing accurate and interesting information about the International Space Station and life aboard it.',
+                'footer.linksTitle': 'Quick Links',
+                'footer.resourcesTitle': 'Additional Resources'
+            }
+        };
+
+        // دالة لتحديث النصوص بناءً على اللغة المحددة
+        function updateLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // تحديث النصوص
+            for (const key in translations[lang]) {
+                const elements = document.querySelectorAll(`[data-translate="${key}"]`);
+                elements.forEach(element => {
+                    element.textContent = translations[lang][key];
+                });
+            }
+            
+            // تحديث زر اللغة
+            languageText.textContent = translations[lang]['language.text'];
+            
+            // تحديث اتجاه النص للصفحة بأكملها
+            document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.style.textAlign = lang === 'ar' ? 'right' : 'left';
+            
+            // تحديث اتجاه القوائم
+            const featureLists = document.querySelectorAll('.feature-list');
+            featureLists.forEach(list => {
+                list.style.paddingRight = lang === 'ar' ? '1.5rem' : '0';
+                list.style.paddingLeft = lang === 'ar' ? '0' : '1.5rem';
+            });
+            
+            // تحديث موقع علامة ✓ في القوائم
+            const listItems = document.querySelectorAll('.feature-list li');
+            listItems.forEach(item => {
+                if (lang === 'ar') {
+                    item.style.paddingRight = '1.5rem';
+                    item.style.paddingLeft = '0';
+                } else {
+                    item.style.paddingRight = '0';
+                    item.style.paddingLeft = '1.5rem';
+                }
+            });
+            
+            const listMarkers = document.querySelectorAll('.feature-list li:before');
+            listMarkers.forEach(marker => {
+                if (lang === 'ar') {
+                    marker.style.right = '0';
+                    marker.style.left = 'auto';
+                } else {
+                    marker.style.right = 'auto';
+                    marker.style.left = '0';
+                }
+            });
+        }
+
+        // تبديل اللغة عند النقر على الزر
+        languageToggle.addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+            updateLanguage(currentLanguage);
+        });
+
+        // تهيئة اللغة الافتراضية عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            updateLanguage(currentLanguage);
+        });
+    </script>
+</body>
+
+</html>

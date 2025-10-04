@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>صفحة الأعضاء</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      text-align: center;
+    }
+    h1 {
+      background: #4CAF50;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+    .members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 15px;
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .card h3 {
+      margin: 10px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>أعضاء الفريق</h1>
+  <div class="members" id="members"></div>
+
+  <script>
+    const members = [
+      { name: "أحمد محمد", img: "https://via.placeholder.com/200" },
+      { name: "سارة علي", img: "https://via.placeholder.com/200" },
+      { name: "محمد إبراهيم", img: "https://via.placeholder.com/200" },
+      { name: "نورهان محمود", img: "https://via.placeholder.com/200" },
+      { name: "كريم هاني", img: "https://via.placeholder.com/200" }
+    ];
+
+    const container = document.getElementById("members");
+
+    members.forEach(member => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${member.img}" alt="${member.name}">
+        <h3>${member.name}</h3>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
