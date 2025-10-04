@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض تقديمي - توزيع مهام مشروع ISS-25 Explorer</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+         :root {
+            --primary: #1a365d;
+            --secondary: #2d3748;
+            --accent: #3182ce;
+            --light: #f7fafc;
+            --dark: #2d3748;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #60a5fa;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 25px 0 15px;
+            color: #93c5fd;
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
+            color: #bfdbfe;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .member-card {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #334155;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .member-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #475569;
+        }
+        
+        .member-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 15px;
+            overflow: hidden;
+            border: 2px solid #60a5fa;
+        }
+        
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+        
+        .member-role {
+            color: #93c5fd;
+            font-size: 1rem;
+        }
+        
+        .task-list {
+            list-style-type: none;
+        }
+        
+        .task-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #475569;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .task-list li:before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .progress-section {
+            margin: 40px 0;
+        }
+        
+        .progress-bar {
+            height: 12px;
+            background: #334155;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+        
+        .conclusion {
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-left: 5px solid #3b82f6;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            border-top: 1px solid #334155;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #3b82f6;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <link rel="shortcut icon" href="sat.svg" type="image/x-icon">
+  <style>
+    #ttt{
+        height: 70px;
+        padding-top: 0px;
+    }
+  </style>
+  
+</head>
+
+<body>
+    <header class="sticky top-0 z-30 border-b border-white/10 bg-black/40 glass" id="ttt">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-8 w-8 rounded-xl bg-indigo-500/20 flex items-center justify-center shadow-glow">
+          <!-- simple rocket icon -->
+          <img src="sat.svg" alt="">
+        </div>
+        <div>
+          <p class="text-sm text-white/70" data-i18n="brand_over"></p>
+          <h1 class="font-semibold tracking-tight" data-i18n="brand_title" s>ISS‑25 Explorer</h1>
+        </div>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-white/80">
+        <a href="index.html" class="hover:text-white transition" data-i18n="nav_track">الرئيسية</a>
+        <a href="life.html" class="hover:text-white transition" data-i18n="nav_timeline">الحياة علي متن iss</a>
+        <a href="index.html#mapwrap" class="hover:text-white transition" data-i18n="nav_track">التتبّع الحيّ</a>
+                <a href="index.html#cupola" class="hover:text-white transition" data-i18n="nav_cupola">قبة المحطة</a>
+
+
+      </nav>
+      <div class="flex items-center gap-2">
+        <!-- Language toggle -->
+        <!-- Theme toggle -->
+
+      </div>
+    </div>
+  </header>
+    <div class="container">
+        <header>
+            <h1>فريق ISS-25 Explorer</h1>
+            <p class="subtitle">عرض تقديمي يوضح توزيع المهام بين أعضاء الفريق الستة</p>
+        </header>
+
+        <section class="project-overview">
+            <h2>نظرة عامة على المشروع</h2>
+            <p>ISS-25 Explorer هو موقع ويب تفاعلي بمناسبة مرور 25 عامًا على إنشاء محطة الفضاء الدولية. يتميز الموقع بتصميم عصري، واجهة مستخدم ثنائية اللغة (العربية والإنجليزية)، وتتبع حي لموقع المحطة، بالإضافة إلى محتوى غني عن الحياة على متنها.</p>
+
+            <div class="tech-stack">
+                <div class="tech-item">HTML5</div>
+                <div class="tech-item">CSS3</div>
+                <div class="tech-item">JavaScript</div>
+                <div class="tech-item">Tailwind CSS</div>
+                <div class="tech-item">Leaflet.js</div>
+                <div class="tech-item">Three.js</div>
+                <div class="tech-item">NASA APIs</div>
+                <div class="tech-item">RTL Design</div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <h2>فريق العمل</h2>
+            <div class="team-grid">
+                <!-- العضو الأول -->
+                <div class="member-card">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <img src="fa.jpg" alt="Fathy">
+                        </div>
+                        <div>
+                            <div class="member-name">Fathy</div>
+                            <div class="member-role">مطور واجهة أمامية وتصميم</div>
+                        </div>
+                    </div>
+                    <h3>المهام المنفذة:</h3>
+                    <ul class="task-list">
+                        <li>تصميم واجهة المستخدم الرئيسية باستخدام Tailwind CSS</li>
+                        <li>تطبيق نظام التصميم الزجاجي (Glassmorphism)</li>
+                        <li>تنفيذ نظام التبديل بين الوضع الليلي والنهاري</li>
+                        <li>تحسين تجربة المستخدم للعرض على الأجهزة المختلفة</li>
+                        <li>تصميم وتنفيذ صفحة "الحياة على متن المحطة"</li>
+                    </ul>
+                </div>
+
+                <!-- العضو الثاني -->
+                <div class="member-card">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <img src="mo.jpg" alt="Moaz">
+                        </div>
+                        <div>
+                            <div class="member-name">Moaz</div>
+                            <div class="member-role">مطور خرائط وتتبع</div>
+                        </div>
+                    </div>
+                    <h3>المهام المنفذة:</h3>
+                    <ul class="task-list">
+                        <li>دمج خريطة Leaflet.js لتتبع موقع المحطة</li>
+                        <li>ربط API موقع المحطة الدولي (wheretheiss.at)</li>
+                        <li>تنفيذ حساب مسار المحطة باستخدام satellite.js</li>
+                        <li>إنشاء علامة تفاعلية للمحطة مع تأثيرات بصرية</li>
+                        <li>إضافة طبقات خرائط مختلفة للوضع الليلي والنهاري</li>
+                    </ul>
+                </div>
+
+                <!-- العضو الثالث -->
+                <div class="member-card">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <img src="abd.jpg" alt="Abdallah">
+                        </div>
+                        <div>
+                            <div class="member-name">Abdallah</div>
+                            <div class="member-role">مطورة محتوى وترجمة</div>
+                        </div>
+                    </div>
+                    <h3>المهام المنفذة:</h3>
+                    <ul class="task-list">
+                        <li>تطوير نظام الترجمة ثنائي اللغة (العربية/الإنجليزية)</li>
+                        <li>ترجمة جميع النصوص والمحتوى للغة العربية</li>
+                        <li>كتابة محتوى صفحة "الحياة على متن المحطة"</li>
+                        <li>إعداد الخط الزمني التفاعلي للمحطة</li>
+                        <li>ربط API ناسا لاسترجاع الصور والمحتوى</li>
+                    </ul>
+                </div>
+
+                <!-- العضو الرابع -->
+                <div class="member-card">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <img src="hi.png" alt="Hitham">
+                        </div>
+                        <div>
+                            <div class="member-name">Hitham</div>
+                            <div class="member-role">مطورة تجارب تفاعلية</div>
+                        </div>
+                    </div>
+                    <h3>المهام المنفذة:</h3>
+                    <ul class="task-list">
+                        <li>تنفيذ عارض القبة البانورامية (Cupola) باستخدام Three.js</li>
+                        <li>إضافة عناصر التحكم في العارض البانورامي</li>
+                        <li>دمج فيديو البث المباشر من المحطة</li>
+                        <li>تحسين أداء التطبيق وسرعة التحميل</li>
+                        <li>إضافة تأثيرات بصرية وتحسينات للواجهة</li>
+                    </ul>
+                </div>
+
+                <!-- العضو الخامس -->
+                <div class="member-card">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <img src="mr.jpg" alt="Mr.Ansary">
+                        </div>
+                        <div>
+                            <div class="member-name">Mr.Ansary</div>
+                            <div class="member-role">مدير مشروع ومراجع</div>
+                        </div>
+                    </div>
+                    <h3>المهام المنفذة:</h3>
+                    <ul class="task-list">
+                        <li>تخطيط هيكل المشروع وتوزيع المهام</li>
+                        <li>مراجعة الكود وضمان جودته</li>
+                        <li>اختبار الوظائف والتأكد من عملها المتكامل</li>
+                        <li>حل مشاكل التكامل بين مكونات المشروع</li>
+                        <li>إعداد التوثيق النهائي للمشروع</li>
+                    </ul>
+                </div>
+
+                <!-- العضو السادس -->
+                <div class="member-card">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <img src="kr.jpg" alt="Kareem">
+                        </div>
+                        <div>
+                            <div class="member-name">Kareem</div>
+                            <div class="member-role">مصمم تجربة المستخدم</div>
+                        </div>
+                    </div>
+                    <h3>المهام المنفذة:</h3>
+                    <ul class="task-list">
+                        <li>تصميم تجربة المستخدم وتحسين سلاسة التصفح</li>
+                        <li>إجراء اختبارات سهولة الاستخدام</li>
+                        <li>تحليل سلوك المستخدم وتحسين التصميم</li>
+                        <li>تطوير نظام التنقل بين الصفحات</li>
+                        <li>تحسين الوصولية للمستخدمين ذوي الاحتياجات الخاصة</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+
+    <script>
+        // تأثير بسيط لشريط التقدم
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
