@@ -79,8 +79,20 @@ ISS-25 Explorer is an interactive educational web platform developed to celebrat
 - A modern web browser (Chrome, Firefox, Safari, Edge)
 - Internet connection for live data
 
-### Installation
+## 👥 Team
+**###🎯 Project Leadership**
+(Ansary Mahmoud) - Project Supervisor
+(Moaz Mohammed Al-Jabali) - Team Leader
+**###💻 Development Team**
+(Heitham Ahmed) - Frontend Development
+(Karim Hani) - Frontend Development
+(Fathy Abdel Rahman) - Backend Development
+**###🎨 Media & Design**
+(Abdullah Faye) - Multimedia & Content
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/iss-25-explorer.git
+**###🤝 Contributing**
+We welcome contributions! Please follow these steps:
+
+Fork the Project
+
+Create your Feature Branch
