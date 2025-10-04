@@ -80,21 +80,15 @@ ISS-25 Explorer is an interactive educational web platform developed to celebrat
 - Internet connection for live data
 
 ## 👥 Team
-###🎯 Project Leadership
+### 🎯 Project Leadership
 - (Ansary Mahmoud) - Project Supervisor
 - (Moaz Mohammed Al-Jabali) - Team Leader
   
-###💻 Development Team
+### 💻 Development Team
 - (Heitham Ahmed) - Frontend Development
 - (Karim Hani) - Frontend Development
 - (Fathy Abdel Rahman) - Backend Development
   
-###🎨 Media & Design
+### 🎨 Media & Design
 - (Abdullah Faye) - Multimedia & Content
 
-###🤝 Contributing
-We welcome contributions! Please follow these steps:
-
-Fork the Project
-
-Create your Feature Branch
