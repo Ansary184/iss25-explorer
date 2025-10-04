@@ -9,14 +9,11 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="sat.svg" type="image/x-icon">
-    <style>
-        /* Glassmorphism helpers */
-        
+    <style>        
         .glass {
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-        /* تنسيق الصور */
         
         .content-image {
             transition: transform 0.3s ease;
@@ -26,7 +23,6 @@
         .content-image:hover {
             transform: scale(1.02);
         }
-        /* تنسيق القوائم */
         
         .feature-list li {
             position: relative;
@@ -41,14 +37,12 @@
             color: #3b82f6;
             font-weight: bold;
         }
-        /* تخصيص التمرير */
         
         .scroll-smooth {
             scroll-behavior: smooth;
         }
     </style>
     <script>
-        // Tailwind config (نفس التكوين)
         tailwind.config = {
             theme: {
                 extend: {
@@ -80,7 +74,6 @@
 
 <body class="min-h-screen bg-gradient-to-br from-space-950 to-black text-white selection:bg-indigo-500/40 scroll-smooth">
 
-    <!-- Header / Navbar -->
     <header class="sticky top-0 z-30 border-b border-white/10 bg-black/40 glass">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -101,16 +94,13 @@
 
             </nav>
             <div class="flex items-center gap-2">
-                <!-- زر تبديل اللغة -->
                 <button id="languageToggle" class="flex items-center gap-2 px-3 py-1 rounded-lg border border-white/20 hover:border-white/40 transition text-sm">
                     <span id="languageText" data-translate="language.text">EN</span>
                 </button>
-                <!-- Theme toggle -->
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="relative overflow-hidden py-16">
         <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/20 to-transparent"></div>
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
@@ -126,7 +116,6 @@
         </div>
     </section>
 
-    <!-- Table of Contents -->
     <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         <div class="glass border border-white/10 rounded-3xl p-6">
             <h2 class="text-2xl font-bold mb-4" data-translate="toc.title">محتويات الصفحة</h2>
@@ -167,7 +156,6 @@
         </div>
     </section>
 
-    <!-- Daily Routine Section -->
     <section id="daily-routine" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -204,7 +192,6 @@
         </div>
     </section>
 
-    <!-- Sleeping Section -->
     <section id="sleeping" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white/5 rounded-3xl mt-8">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div class="order-2 lg:order-1">
@@ -240,7 +227,6 @@
         </div>
     </section>
 
-    <!-- Food Section -->
     <section id="food" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -274,7 +260,6 @@
         </div>
     </section>
 
-    <!-- Hygiene Section -->
     <section id="hygiene" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white/5 rounded-3xl mt-8">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div class="order-2 lg:order-1">
@@ -310,7 +295,6 @@
         </div>
     </section>
 
-    <!-- Exercise Section -->
     <section id="exercise" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -343,7 +327,6 @@
         </div>
     </section>
 
-    <!-- Leisure Section -->
     <section id="leisure" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div class="relative">
@@ -380,7 +363,6 @@
         </div>
     </section>
 
-    <!-- Communication Section -->
     <section id="communication" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
@@ -414,7 +396,6 @@
         </div>
     </section>
 
-    <!-- Challenges Section -->
     <section id="challenges" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 bg-white/5 rounded-3xl mt-8">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold" data-translate="challenges.title">التحديات النفسية والبدنية</h2>
@@ -494,7 +475,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="border-t border-white/10 bg-black/40 mt-16 py-8">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-3 gap-8">
@@ -525,28 +505,23 @@
     </footer>
 
     <script>
-        // Language toggle functionality
         const languageToggle = document.getElementById('languageToggle');
         const languageText = document.getElementById('languageText');
         const languageIcon = document.getElementById('languageIcon');
         
         let currentLanguage = 'ar';
         
-        // ترجمة المحتوى
         const translations = {
             ar: {
-                // Header & Navigation
                 'language.text': 'EN',
                 'nav.home': 'الرئيسية',
                 'nav.tracking': 'اعضاء الفريق',
                 'nav.timeline': 'الخط الزمني',
                 
-                // Hero Section
                 'hero.title1': 'الحياة على متن',
                 'hero.title2': 'محطة الفضاء الدولية',
                 'hero.description': 'استكشف بالتفصيل الروتين اليومي، التحديات، والتفاصيل المثيرة للحياة في بيئة الجاذبية الصغرى. من الاستيقاظ حتى النوم، كل شيء مختلف في الفضاء!',
                 
-                // Table of Contents
                 'toc.title': 'محتويات الصفحة',
                 'toc.dailyRoutine': 'الروتين اليومي',
                 'toc.dailyRoutineDesc': 'كيف يبدأ رواد الفضاء يومهم وينهونه',
@@ -565,7 +540,6 @@
                 'toc.communication': 'الاتصال بالأرض',
                 'toc.communicationDesc': 'كيف يتواصل رواد الفضاء مع عائلاتهم وفرق الدعم',
                 
-                // Daily Routine Section
                 'dailyRoutine.title': 'الروتين اليومي على متن المحطة',
                 'dailyRoutine.description': 'يتبع رواد الفضاء على متن محطة الفضاء الدولية جدولاً زمنياً صارماً يشبه إلى حد كبير الجدول المتبع على الأرض، مع بعض الاختلافات الرئيسية بسبب بيئة الجاذبية الصغرى.',
                 'dailyRoutine.subtitle': 'اليوم النموذجي على المحطة:',
@@ -579,7 +553,6 @@
                 'dailyRoutine.list8': 'النوم الساعة 9:30 مساءً',
                 'dailyRoutine.paragraph2': 'يعمل الرواد عادة 10-12 ساعة يومياً من الإثنين إلى الجمعة، ونصف يوم يوم السبت. يوم الأحد هو يوم عطلة كاملة يمكنهم فيه الراحة وممارسة الهوايات والاتصال بعائلاتهم.',
                 
-                // Sleeping Section
                 'sleeping.title': 'النوم في الجاذبية الصغرى',
                 'sleeping.description': 'النوم في الفضاء يختلف تماماً عن النوم على الأرض. بدون الجاذبية، لا يوجد "أعلى" أو "أسفل"، ويمكن للرواد النوم في أي اتجاه يريدون.',
                 'sleeping.subtitle': 'كيف ينام رواد الفضاء:',
@@ -590,7 +563,6 @@
                 'sleeping.list5': 'يستخدمون سدادات أذن للحد من الضوضاء',
                 'sleeping.paragraph2': 'يواجه بعض الرواد صعوبة في النوم خلال الأيام الأولى بسبب عدم وجود شروق وغروب للشمس كل 24 ساعة (تشهد المحطة 16 شروقاً وغروباً يومياً). يستخدم البعض منهم أدوية للمساعدة على النوم في البداية.',
                 
-                // Food Section
                 'food.title': 'الطعام والشراب في الفضاء',
                 'food.description': 'نظام الطعام على متن المحطة الفضائية تطور كثيراً عن الأيام الأولى لرحلات الفضاء. اليوم، يتمتع الرواد بتنوع معقول في وجباتهم، رغم التحديات الفريدة للأكل في الجاذبية الصغرى.',
                 'food.subtitle': 'خصائص طعام الفضاء:',
@@ -601,7 +573,6 @@
                 'food.list5': 'تستخدم ماصات خاصة للشرب من أكياس مغلقة',
                 'food.paragraph2': 'يحصل الرواد على وجبات متنوعة تشمل اللحوم والمعكرونة والفواكه والخضروات. كما توجد بهارات سائلة (مثل صلصة الطماطم والخردل) لإضافة نكهة للطعام. يتم شحن الطعام بشكل دوري على متن مركبات الشحن.',
                 
-                // Hygiene Section
                 'hygiene.title': 'النظافة الشخصية على المحطة',
                 'hygiene.description': 'الحفاظ على النظافة الشخصية في الفضاء يتطلب حلولاً إبداعية. بدون الجاذبية، لا يمكن للرواد الاستحمام بالطريقة التقليدية، ويجب عليهم التكيف مع طرق بديلة.',
                 'hygiene.subtitle': 'روتين النظافة اليومي:',
@@ -612,7 +583,6 @@
                 'hygiene.list5': 'يتم شفط النفايات بدلاً من استخدام المياه',
                 'hygiene.paragraph2': 'يتم إعادة تدوير حوالي 80% من المياه على المحطة، بما في ذلك البول والعرق. هذه الأنظمة ضرورية للبعثات طويلة الأمد حيث يكون توفير المياه أمراً بالغ الأهمية. يتم تجفيف المناشف المستخدمة وإعادة استخدامها عدة مرات قبل التخلص منها.',
                 
-                // Exercise Section
                 'exercise.title': 'التمارين الرياضية في الفضاء',
                 'exercise.description': 'التمرين ليس رفاهية على متن المحطة الفضائية، بل هو ضرورة طبية. في الجاذبية الصغرى، يفقد الجسم العظام والعضلات بسرعة إذا لم يتم تحفيزها بالتمارين.',
                 'exercise.subtitle': 'أجهزة التمرين على المحطة:',
@@ -622,7 +592,6 @@
                 'exercise.list4': 'أجهزة تمارين المقاومة المتقدمة (ARED)',
                 'exercise.paragraph2': 'يمارس الرواد التمارين لمدة ساعتين على الأقل يومياً للحفاظ على كتلة العظام والعضلات وصحة القلب. بدون هذا الروتين، سيفقدون ما يصل إلى 1-2% من كتلة العظام شهرياً، وهو ما يعادل معدل فقدان العظام لشخص مسن على الأرض في عام كامل.',
                 
-                // Leisure Section
                 'leisure.title': 'وقت الفراغ والترفيه',
                 'leisure.description': 'رغم الجدول المزدحم، يحصل رواد الفضاء على وقت للراحة والترفيه. يقضون هذا الوقت في أنشطة متنوعة تساعدهم على الاسترخاء والاتصال بالأرض.',
                 'leisure.subtitle': 'أنشطة الترفيه الشائعة:',
@@ -635,7 +604,6 @@
                 'leisure.list7': 'التواصل مع العائلة والأصدقاء على الأرض',
                 'leisure.paragraph2': 'أحد أكثر الأنشطة شعبية بين الرواد هو مراقبة الأرض من نوافذ المحطة، خاصة قبة المراقبة (Cupola) التي توفر منظراً بانورامياً مذهلاً. كثير من الرواد يصبحون مصورين محترفين نتيجة قضاء ساعات في تصوير الأرض من الفضاء.',
                 
-                // Communication Section
                 'communication.title': 'الاتصال بالأرض',
                 'communication.description': 'يظل رواد الفضاء على اتصال دائم بالأرض عبر أنظمة اتصال متطورة. هذا الاتصال ضروري للعمل والدعم النفسي على حد سواء.',
                 'communication.subtitle': 'طرق الاتصال:',
@@ -646,7 +614,6 @@
                 'communication.list5': 'اتصالات طارئة عبر قنوات مخصصة',
                 'communication.paragraph2': 'يتم الاتصال عبر شبكة الأقمار الصناعية لتتبع وترحيل البيانات (TDRS) التابعة لناسا. عندما تكون المحطة خارج نطاق هذه الأقمار، يتم تخزين الرسائل وإرسالها عند العودة إلى النطاق. هناك تأخير بسيط في الاتصالات (بضع ثوانٍ) بسبب المسافة.',
                 
-                // Challenges Section
                 'challenges.title': 'التحديات النفسية والبدنية',
                 'challenges.description': 'الحياة في الفضاء لا تخلو من التحديات. يواجه الرواد تغيرات فسيولوجية ونفسية تحتاج إلى تكيف مستمر ودعم من فرق الأرض.',
                 'challenges.physicalTitle': 'التحديات البدنية',
@@ -680,25 +647,21 @@
                 'challenges.copingList5': 'روتين تمارين صارم للحفاظ على الصحة البدنية',
                 'challenges.copingList6': 'توفير طعام متنوع ومستساغ',
                 
-                // Footer
                 'footer.title': 'ISS‑25 Explorer',
                 'footer.description': 'مشروع تعليمي يهدف إلى تقديم معلومات دقيقة وشيقة عن محطة الفضاء الدولية والحياة على متنها.',
                 'footer.linksTitle': 'روابط سريعة',
                 'footer.resourcesTitle': 'مصادر إضافية'
             },
             en: {
-                // Header & Navigation
                 'language.text': 'AR',
                 'nav.home': 'Home',
                 'nav.tracking': 'Team Members',
                 'nav.timeline': 'Timeline',
                 
-                // Hero Section
                 'hero.title1': 'Life on Board the',
                 'hero.title2': 'International Space Station',
                 'hero.description': 'Explore in detail the daily routine, challenges, and exciting details of life in a microgravity environment. From waking up to sleeping, everything is different in space!',
                 
-                // Table of Contents
                 'toc.title': 'Page Contents',
                 'toc.dailyRoutine': 'Daily Routine',
                 'toc.dailyRoutineDesc': 'How astronauts start and end their day',
@@ -717,7 +680,6 @@
                 'toc.communication': 'Communication with Earth',
                 'toc.communicationDesc': 'How astronauts communicate with their families and support teams',
                 
-                // Daily Routine Section
                 'dailyRoutine.title': 'Daily Routine on the Station',
                 'dailyRoutine.description': 'Astronauts aboard the International Space Station follow a strict schedule that closely resembles the schedule followed on Earth, with some key differences due to the microgravity environment.',
                 'dailyRoutine.subtitle': 'Typical Day on the Station:',
@@ -731,7 +693,6 @@
                 'dailyRoutine.list8': 'Sleep at 9:30 PM',
                 'dailyRoutine.paragraph2': 'Astronauts typically work 10-12 hours daily from Monday to Friday, and a half day on Saturday. Sunday is a full day off where they can rest, pursue hobbies, and contact their families.',
                 
-                // Sleeping Section
                 'sleeping.title': 'Sleeping in Microgravity',
                 'sleeping.description': 'Sleeping in space is completely different from sleeping on Earth. Without gravity, there is no "up" or "down," and astronauts can sleep in any direction they want.',
                 'sleeping.subtitle': 'How Astronauts Sleep:',
@@ -742,7 +703,6 @@
                 'sleeping.list5': 'They use earplugs to reduce noise',
                 'sleeping.paragraph2': 'Some astronauts have difficulty sleeping during the first days due to the absence of sunrise and sunset every 24 hours (the station experiences 16 sunrises and sunsets daily). Some of them use medication to help them sleep initially.',
                 
-                // Food Section
                 'food.title': 'Food and Drink in Space',
                 'food.description': 'The food system on the space station has evolved significantly from the early days of space travel. Today, astronauts enjoy reasonable variety in their meals, despite the unique challenges of eating in microgravity.',
                 'food.subtitle': 'Characteristics of Space Food:',
@@ -753,7 +713,6 @@
                 'food.list5': 'Special straws are used for drinking from sealed bags',
                 'food.paragraph2': 'Astronauts receive varied meals including meats, pasta, fruits, and vegetables. There are also liquid condiments (such as tomato sauce and mustard) to add flavor to food. Food is periodically shipped aboard cargo vehicles.',
                 
-                // Hygiene Section
                 'hygiene.title': 'Personal Hygiene on the Station',
                 'hygiene.description': 'Maintaining personal hygiene in space requires creative solutions. Without gravity, astronauts cannot shower in the traditional way and must adapt to alternative methods.',
                 'hygiene.subtitle': 'Daily Hygiene Routine:',
@@ -764,7 +723,6 @@
                 'hygiene.list5': 'Waste is suctioned instead of using water',
                 'hygiene.paragraph2': 'About 80% of water is recycled on the station, including urine and sweat. These systems are essential for long-duration missions where water conservation is critical. Used towels are dried and reused several times before disposal.',
                 
-                // Exercise Section
                 'exercise.title': 'Physical Exercise in Space',
                 'exercise.description': 'Exercise is not a luxury on the space station, but a medical necessity. In microgravity, the body loses bone and muscle mass rapidly if not stimulated by exercise.',
                 'exercise.subtitle': 'Exercise Equipment on the Station:',
@@ -774,7 +732,6 @@
                 'exercise.list4': 'Advanced Resistive Exercise Device (ARED)',
                 'exercise.paragraph2': 'Astronauts exercise for at least two hours daily to maintain bone and muscle mass and heart health. Without this routine, they would lose up to 1-2% of bone mass monthly, equivalent to the bone loss rate of an elderly person on Earth in a full year.',
                 
-                // Leisure Section
                 'leisure.title': 'Leisure Time and Entertainment',
                 'leisure.description': 'Despite the busy schedule, astronauts get time for rest and entertainment. They spend this time on various activities that help them relax and connect with Earth.',
                 'leisure.subtitle': 'Common Leisure Activities:',
@@ -787,7 +744,6 @@
                 'leisure.list7': 'Communicating with family and friends on Earth',
                 'leisure.paragraph2': 'One of the most popular activities among astronauts is observing Earth from station windows, especially the Cupola observation module which provides a stunning panoramic view. Many astronauts become professional photographers as a result of spending hours photographing Earth from space.',
                 
-                // Communication Section
                 'communication.title': 'Communication with Earth',
                 'communication.description': 'Astronauts remain in constant contact with Earth through advanced communication systems. This communication is essential for both work and psychological support.',
                 'communication.subtitle': 'Communication Methods:',
@@ -798,7 +754,6 @@
                 'communication.list5': 'Emergency communications via dedicated channels',
                 'communication.paragraph2': 'Communication is done through NASA\'s Tracking and Data Relay Satellite (TDRS) network. When the station is out of range of these satellites, messages are stored and sent when back in range. There is a slight delay in communications (a few seconds) due to distance.',
                 
-                // Challenges Section
                 'challenges.title': 'Psychological and Physical Challenges',
                 'challenges.description': 'Life in space is not without challenges. Astronauts face physiological and psychological changes that require continuous adaptation and support from Earth teams.',
                 'challenges.physicalTitle': 'Physical Challenges',
@@ -832,7 +787,6 @@
                 'challenges.copingList5': 'Strict exercise routine to maintain physical health',
                 'challenges.copingList6': 'Providing varied and palatable food',
                 
-                // Footer
                 'footer.title': 'ISS‑25 Explorer',
                 'footer.description': 'An educational project aimed at providing accurate and interesting information about the International Space Station and life aboard it.',
                 'footer.linksTitle': 'Quick Links',
@@ -840,12 +794,10 @@
             }
         };
 
-        // دالة لتحديث النصوص بناءً على اللغة المحددة
         function updateLanguage(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             
-            // تحديث النصوص
             for (const key in translations[lang]) {
                 const elements = document.querySelectorAll(`[data-translate="${key}"]`);
                 elements.forEach(element => {
@@ -853,21 +805,17 @@
                 });
             }
             
-            // تحديث زر اللغة
             languageText.textContent = translations[lang]['language.text'];
             
-            // تحديث اتجاه النص للصفحة بأكملها
             document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
             document.body.style.textAlign = lang === 'ar' ? 'right' : 'left';
             
-            // تحديث اتجاه القوائم
             const featureLists = document.querySelectorAll('.feature-list');
             featureLists.forEach(list => {
                 list.style.paddingRight = lang === 'ar' ? '1.5rem' : '0';
                 list.style.paddingLeft = lang === 'ar' ? '0' : '1.5rem';
             });
             
-            // تحديث موقع علامة ✓ في القوائم
             const listItems = document.querySelectorAll('.feature-list li');
             listItems.forEach(item => {
                 if (lang === 'ar') {
@@ -891,17 +839,16 @@
             });
         }
 
-        // تبديل اللغة عند النقر على الزر
         languageToggle.addEventListener('click', () => {
             currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
             updateLanguage(currentLanguage);
         });
 
-        // تهيئة اللغة الافتراضية عند تحميل الصفحة
         document.addEventListener('DOMContentLoaded', function() {
             updateLanguage(currentLanguage);
         });
     </script>
 </body>
+
 
 </html>
