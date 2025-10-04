@@ -8,7 +8,6 @@
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Tailwind config (optional brand palette)
     tailwind.config = {
       theme: {
         extend: {
@@ -40,7 +39,6 @@
     .leaflet-container { direction: ltr; }
     .leaflet-control { direction: rtl; }
 
-    /* ISS marker animation */
     .iss-icon {
       width: 24px;
       height: 24px;
@@ -239,7 +237,6 @@
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-space-950 to-black text-white selection:bg-indigo-500/40">
-  <!-- Header / Navbar -->
   <header class="sticky top-0 z-30 border-b border-white/10 bg-black/40 glass">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
       <div class="flex items-center gap-3">
@@ -259,7 +256,6 @@
         <a href="life.html" class="hover:text-white transition" data-i18n="nav_life">الحياة على متن ISS</a>
       </nav>
       <div class="flex items-center gap-2">
-        <!-- Language toggle -->
         <button id="langToggle" class="glass border border-white/10 rounded-xl px-3 py-2 text-sm text-white/90 hover:bg-white/10 transition" aria-label="Toggle language">AR</button>
         <!-- Theme toggle -->
         <button id="themeToggle" class="glass border border-white/10 rounded-xl p-2 text-white/90 hover:bg-white/10 transition" aria-label="Toggle theme">
@@ -269,7 +265,6 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
       <div class="grid lg:grid-cols-2 gap-8 items-center">
@@ -294,7 +289,6 @@
     </div>
   </section>
 
-  <!-- Cupola 360 Section -->
   <section id="cupola" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
     <div class="text-center mb-8">
       <h2 class="text-2xl sm:text-3xl font-bold" data-i18n="cupola_title">تجربة قبة المحطة الفضائية (Cupola)</h2>
@@ -312,7 +306,6 @@
         <p class="text-sm text-white/80 mt-2" data-i18n="cupola_info_text">تمتلك القبة 7 نوافذ وتوفر منظرًا استثنائيًا للأرض. تستخدم لمراقبة عمليات السير في الفضاء وتوجيه الذراع الروبوتية.</p>
       </div>
       
-      <!-- عناصر التحكم في المشاهد -->
       <div class="scene-controls">
         <button id="scene1" class="scene-btn active" title="فيديو القبة 1"><img src="ply.svg" alt=""></button>
         <button id="scene2" class="scene-btn" title="فيديو القبة 2"><img src="ear.svg" alt=""></button>
@@ -320,20 +313,17 @@
         <button id="scene4" class="scene-btn" title="صورة القبة 2"><img src="cam.svg" alt=""></button>
       </div>
       
-      <!-- عناصر التحكم في التكبير/التصغير -->
       <div class="zoom-controls">
         <button id="zoom-in" class="zoom-btn" title="تكبير"><img src="pp.svg" alt=""></button>
         <button id="zoom-out" class="zoom-btn" title="تصغير"><img src="mm.svg" alt=""></button>
       </div>
       
-      <!-- عناصر التحكم في الفيديو -->
       <div class="video-controls">
         <button id="play-pause" class="video-btn" title="تشغيل/إيقاف"><img src="ab.svg" alt=""></button>
         <button id="mute-unmute" class="video-btn" title="كتم/إلغاء كتم"><img src="off.svg" alt=""></button>
         <button id="fullscreen" class="video-btn" data-i18n="cupola_fullscreen"><img src="full.svg" alt=""></button>
       </div>
       
-      <!-- عناصر التحكم العامة -->
       <div class="viewer-controls">
         <button id="auto-rotate" class="viewer-btn" data-i18n="cupola_auto_rotate">تدوير تلقائي</button>
         <button id="reset-view" class="viewer-btn" data-i18n="cupola_reset">إعادة الضبط</button>
@@ -364,8 +354,6 @@
   </section>
   
 
-  <!-- باقي المحتوى الأصلي -->
-  <!-- Map + Sidebar -->
   <main id="mapwrap" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-12 grid lg:grid-cols-[minmax(0,1fr)_380px] gap-6">
     <!-- Map card -->
     <section class="glass border border-white/10 rounded-3xl overflow-hidden">
@@ -388,7 +376,6 @@
       </div>
     </section>
 
-    <!-- Sidebar: Timeline & Life Aboard -->
     <aside class="space-y-6">
       <section class="glass border border-white/10 rounded-3xl p-4">
         <div class="flex items-center justify-between mb-2">
@@ -426,11 +413,9 @@
     <span data-i18n="foot">© 2025 ISS‑25 Explorer — تجربة تعليمية مفتوحة المصدر. بيانات وصور من وكالات وواجهات عامة.</span>
   </footer>
 
-  <!-- Toast for errors -->
   <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-red-500 text-white px-4 py-2 rounded-xl shadow-lg z-50"></div>
 
   <script>
-    // ===== i18n =====
     const i18n = {
       ar: {
         brand_over: '', brand_title: 'ISS‑25 Explorer',
@@ -519,15 +504,12 @@
       localStorage.setItem('issTheme', isDark ? 'dark' : 'light');
       themeIcon.textContent = isDark ? '🌙' : '☀️';
       
-      // تحديث طبقة الخريطة بناءً على السمة
       updateMapTheme(isDark);
     }
 
-    // ===== Map & ISS Tracking =====
     let map, issMarker, issPath, tleData;
     let dayLayer, nightLayer;
 
-    // إنشاء علامة ISS مخصصة
     function createIssIcon() {
       return L.divIcon({
         html: '<div class="iss-icon"></div>',
@@ -537,9 +519,7 @@
       });
     }
 
-    // تهيئة الخريطة
     function initMap() {
-      // تأكد من وجود عنصر الخريطة أولاً
       if (!document.getElementById('map')) {
         console.error("عنصر الخريطة غير موجود في DOM");
         return;
@@ -553,7 +533,6 @@
         maxBoundsViscosity: 1.0
       });
 
-      // إنشاء طبقات الخريطة
       dayLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         maxZoom: 19
@@ -565,7 +544,6 @@
         maxZoom: 20
       });
 
-      // تطبيق الطبقة المناسبة بناءً على السمة الحالية
       const isDark = localStorage.getItem('issTheme') !== 'light';
       if (isDark) {
         nightLayer.addTo(map);
@@ -576,12 +554,10 @@
       issMarker = L.marker([0, 0], { icon: createIssIcon() }).addTo(map);
       issPath = L.polyline([], { color: '#3b82f6', weight: 2, opacity: 0.7 }).addTo(map);
 
-      // جلب بيانات الموقع والمسار
       fetchISSData();
       fetchTLE();
     }
 
-    // تحديث سمة الخريطة
     function updateMapTheme(isDark) {
       if (!map) return;
       
@@ -598,7 +574,6 @@
       }
     }
 
-    // جلب بيانات الموقع الحالي
     async function fetchISSData() {
       try {
         const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
@@ -607,11 +582,9 @@
         const data = await response.json();
         const { latitude, longitude, altitude, velocity } = data;
         
-        // تحديث الموقع
         issMarker.setLatLng([latitude, longitude]);
         map.panTo([latitude, longitude], { animate: true, duration: 1 });
         
-        // تحديث معلومات الجانبية
         updateSidebarData(latitude, longitude, altitude, velocity);
         
       } catch (error) {
@@ -619,11 +592,9 @@
         showToast('تعذر تحديث موقع المحطة. جاري إعادة المحاولة...');
       }
       
-      // جدولة التحديث التالي
       setTimeout(fetchISSData, 3000);
     }
 
-    // جلب بيانات TLE للمسار
     async function fetchTLE() {
       try {
         // التحقق من وجود مكتبة satellite.js
@@ -650,11 +621,9 @@
         showToast('تعذر تحديث مسار المحطة. جاري إعادة المحاولة...');
       }
       
-      // جدولة التحديث التالي
       setTimeout(fetchTLE, 60000);
     }
 
-    // تحديث مسار المحطة
     function updatePath() {
       if (!tleData || typeof satellite === 'undefined') return;
       
@@ -663,7 +632,6 @@
         const now = new Date();
         const points = [];
         
-        // حساب النقاط للمسار القادم (90 دقيقة)
         for (let min = 0; min < 90; min += 5) {
           const future = new Date(now.getTime() + min * 60000);
           const positionAndVelocity = satellite.propagate(satrec, future);
@@ -686,7 +654,6 @@
       }
     }
 
-    // تحديث المعلومات الجانبية
     function updateSidebarData(lat, lng, alt, vel) {
       const latEl = document.getElementById('iss-lat');
       const lngEl = document.getElementById('iss-lng');
@@ -699,7 +666,6 @@
       if (velEl) velEl.textContent = Math.round(vel).toLocaleString();
     }
 
-    // عرض رسائل الخطأ
     function showToast(message) {
       const toast = document.getElementById('toast');
       toast.textContent = message;
@@ -707,7 +673,6 @@
       setTimeout(() => toast.classList.add('hidden'), 3000);
     }
 
-    // ===== Timeline (NASA Image & Video Library) =====
     const timelineEl = document.getElementById('timeline');
     
     function timelineSkeleton(){
@@ -742,7 +707,6 @@
         });
       }catch(e){
         showToast('تعذر تحميل الخط الزمني / Timeline failed');
-        // عرض بيانات افتراضية في حالة فشل التحميل
         loadDefaultTimeline();
       }
     }
@@ -771,14 +735,12 @@
       });
     }
 
-    // ===== Cupola 360 Viewer =====
     let scene, camera, renderer, controls, video, videoTexture, videoMesh;
     let isAutoRotating = true;
     let isPlaying = true;
     let isMuted = false;
     let currentScene = 0;
     
-    // مصادر الفيديو والصور
     const scenes = [
       { type: 'video', src: 'Cupola2.mp4', poster: 'images/cupola1-poster.jpg' },
       { type: 'video', src: '2402_001_AR_EN.mp4', poster: 'images/cupola2-poster.jpg' },
@@ -787,31 +749,25 @@
     ];
 
     function initCupolaViewer() {
-      // إنشاء المشهد والكاميرا والعارض
       scene = new THREE.Scene();
       
-      // إنشاء كاميرا ذات منظور واسع
       const container = document.getElementById('cupola-container');
       camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
       camera.position.set(0, 0, 0.1);
       
-      // إنشاء العارض
       renderer = new THREE.WebGLRenderer({ antialias: true });
       renderer.setSize(container.offsetWidth, container.offsetHeight);
       renderer.setPixelRatio(window.devicePixelRatio);
       container.appendChild(renderer.domElement);
       
-      // إضافة عناصر التحكم
       controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true;
       controls.rotateSpeed = 0.5;
       controls.enableZoom = true;
       controls.enablePan = false;
       
-      // تحميل المشهد الأول
       loadScene(currentScene);
       
-      // إضافة معالج الأحداث لأزرار التحكم
       document.getElementById('auto-rotate').addEventListener('click', function() {
         isAutoRotating = !isAutoRotating;
         this.textContent = isAutoRotating ? 
@@ -833,7 +789,6 @@
         }
       });
       
-      // أزرار التكبير/التصغير
       document.getElementById('zoom-in').addEventListener('click', function() {
         controls.dollyOut(0.5);
       });
@@ -842,7 +797,6 @@
         controls.dollyIn(0.5);
       });
       
-      // أزرار التحكم في الفيديو
       document.getElementById('play-pause').addEventListener('click', function() {
         togglePlayPause();
       });
@@ -851,27 +805,22 @@
         toggleMute();
       });
       
-      // أزرار تغيير المشاهد
       for (let i = 1; i <= 4; i++) {
         document.getElementById(`scene${i}`).addEventListener('click', function() {
           switchScene(i - 1);
         });
       }
       
-      // معالجة تغيير حجم النافذة
       window.addEventListener('resize', onWindowResize, false);
     }
 
     function loadScene(sceneIndex) {
-      // إظهار مؤشر التحميل
       document.getElementById('loading-overlay').style.display = 'flex';
       
-      // إزالة المشهد الحالي إذا كان موجودًا
       if (videoMesh) {
         scene.remove(videoMesh);
       }
       
-      // تنظيف موارد الفيديو السابقة
       if (video) {
         video.pause();
         video.removeAttribute('src');
@@ -888,40 +837,33 @@
     }
 
     function loadVideoScene(sceneData) {
-      // إنشاء عنصر فيديو
       video = document.createElement('video');
       video.loop = true;
       video.muted = isMuted;
       video.preload = 'auto';
       video.playsInline = true;
       
-      // تحديث زر كتم الصوت
       updateMuteButton();
       
       video.addEventListener('loadeddata', function() {
-        // إنشاء نسيج الفيديو
         videoTexture = new THREE.VideoTexture(video);
         videoTexture.minFilter = THREE.LinearFilter;
         videoTexture.magFilter = THREE.LinearFilter;
         videoTexture.format = THREE.RGBFormat;
         
-        // إنشاء material للمشهد
         const geometry = new THREE.SphereGeometry(500, 60, 40);
         const material = new THREE.MeshBasicMaterial({
           map: videoTexture,
           side: THREE.BackSide
         });
         
-        // إنشاء mesh وإضافته إلى المشهد
         videoMesh = new THREE.Mesh(geometry, material);
         scene.add(videoMesh);
         
-        // تشغيل الفيديو
         video.play();
         isPlaying = true;
         updatePlayButton();
         
-        // إخفاء مؤشر التحميل
         document.getElementById('loading-overlay').style.display = 'none';
       });
       
@@ -929,7 +871,6 @@
         console.error('Error loading video:', e);
         showToast('تعذر تحميل الفيديو. جاري استخدام صورة بديلة...');
         
-        // استخدام صورة بديلة
         const backupImage = new THREE.TextureLoader().load('https://images-assets.nasa.gov/image/ISS030-E-015472/ISS030-E-015472~orig.jpg');
         const geometry = new THREE.SphereGeometry(500, 60, 40);
         const material = new THREE.MeshBasicMaterial({
@@ -943,11 +884,9 @@
         document.getElementById('loading-overlay').style.display = 'none';
       });
       
-      // تحميل الفيديو
       video.src = sceneData.src;
       video.load();
       
-      // تحديث حالة الأزرار
       updateSceneButtons();
     }
 
@@ -957,21 +896,17 @@
       loader.load(
         sceneData.src,
         function(texture) {
-          // إنشاء material للمشهد
           const geometry = new THREE.SphereGeometry(500, 60, 40);
           const material = new THREE.MeshBasicMaterial({
             map: texture,
             side: THREE.BackSide
           });
           
-          // إنشاء mesh وإضافته إلى المشهد
           videoMesh = new THREE.Mesh(geometry, material);
           scene.add(videoMesh);
           
-          // إخفاء مؤشر التحميل
           document.getElementById('loading-overlay').style.display = 'none';
           
-          // تحديث حالة الأزرار
           updateSceneButtons();
         },
         undefined,
@@ -979,7 +914,6 @@
           console.error('Error loading image:', err);
           showToast('تعذر تحميل الصورة. جاري استخدام صورة بديلة...');
           
-          // استخدام صورة بديلة
           const backupImage = new THREE.TextureLoader().load('https://images-assets.nasa.gov/image/ISS030-E-015472/ISS030-E-015472~orig.jpg');
           const geometry = new THREE.SphereGeometry(500, 60, 40);
           const material = new THREE.MeshBasicMaterial({
@@ -1041,7 +975,6 @@
         }
       });
       
-      // إظهار/إخفاء أزرار التحكم في الفيديو
       const videoControls = document.querySelector('.video-controls');
       if (videoControls) {
         videoControls.style.display = scenes[currentScene].type === 'video' ? 'flex' : 'none';
@@ -1074,7 +1007,6 @@
         controls.autoRotate = false;
       }
       
-      // تحديث نسيج الفيديو إذا كان مشغلاً
       if (videoTexture && video && isPlaying) {
         videoTexture.needsUpdate = true;
       }
@@ -1083,9 +1015,7 @@
       renderer.render(scene, camera);
     }
 
-    // ===== Initialize Everything =====
     function initializeApp() {
-      // تهيئة اللغة والسمة
       const savedLang = localStorage.getItem('issLang') || 'ar';
       const savedTheme = localStorage.getItem('issTheme') || 'dark';
       
@@ -1095,32 +1025,25 @@
         themeIcon.textContent = '☀️';
       }
 
-      // تهيئة الخريطة بعد تحميل DOM
       initMap();
       loadTimeline();
       
-      // تهيئة عارض القبة
       initCupolaViewer();
       
-      // بدء التقديم
       animate();
       
-      // إضافة مستمع حدث لإعادة تحميل الجدول الزمني
       document.getElementById('reloadTimeline')?.addEventListener('click', loadTimeline);
       
-      // إضافة مستمعي الأحداث للأزرار
       langBtn.addEventListener('click', toggleLang);
       themeBtn.addEventListener('click', toggleTheme);
     }
 
-    // الانتظار حتى يتم تحميل جميع الموارد
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', initializeApp);
     } else {
       initializeApp();
     }
 
-    // معالجة أخطاء تحميل المكتبات
     window.addEventListener('error', (e) => {
       if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
         showToast('خطأ في تحميل الموارد. يرجى التحقق من اتصال الإنترنت.');
