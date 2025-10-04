@@ -1,95 +1,86 @@
-🚀 ISS-25 Explorer
+# 🌌 ISS-25 Explorer
+
 <div align="center">
-https://img.shields.io/badge/NASA-Space%2520Apps-0B3D91?style=for-the-badge&logo=nasa
-https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
-https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
-https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
-https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white
 
-An interactive web experience celebrating 25 years of the International Space Station
+![NASA Space Apps](https://img.shields.io/badge/NASA-Space%20Apps-0B3D91?style=for-the-badge&logo=nasa)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
 
-Live Demo • Features • Installation • Contributing
+**An Interactive Web Experience Celebrating 25 Years of the International Space Station**
+
+*Built for NASA Space Apps Challenge 2024*
+
+[Features](#-features) • [Demo](#-live-demo) • [Installation](#-installation) • [Usage](#-usage)
 
 </div>
-📖 Overview
-ISS-25 Explorer is an interactive web project developed to celebrate the 25th anniversary of the International Space Station, created as part of the NASA Space Apps Challenge. The website offers a comprehensive experience to explore the ISS through a modern interface with full bilingual support (Arabic/English).
 
-✨ Features
-🛰️ Live ISS Tracking
-Real-time positioning with live data updates every 3 seconds
+## 📖 About The Project
 
-Predictive trajectory calculations using TLE data
+ISS-25 Explorer is an interactive educational web platform developed to celebrate the 25th anniversary of the International Space Station. This project was created for the NASA Space Apps Challenge 2024 and provides users with real-time ISS tracking, 3D simulations, and comprehensive information about life aboard the station.
 
-Interactive map with animated markers and paths
+### 🎯 Project Highlights
 
-Current altitude, velocity, and position display
+- **Real-time ISS Tracking**: Live position and trajectory visualization
+- **Immersive 3D Experience**: Interactive Cupola module simulation
+- **Bilingual Support**: Full Arabic/English interface
+- **Educational Content**: Detailed information about astronaut life
+- **Responsive Design**: Works on all devices
 
-🌐 3D Cupola Experience
-Immersive 360° panoramic views from the Cupola module
+## ✨ Features
 
-Multiple scene switching (videos and images)
+### 🛰️ Live ISS Tracking
+- Real-time positioning with automatic updates
+- Predictive trajectory calculations
+- Interactive map with animated markers
+- Current altitude, velocity, and coordinates display
 
-Full navigation controls (rotate, zoom, auto-rotation)
+### 🌐 3D Cupola Simulation
+- 360-degree panoramic views
+- Multiple scene switching
+- Full navigation controls
+- Video playback with audio support
 
-Video playback controls with audio support
+### 📚 Educational Content
+- Life aboard the ISS (sleeping, eating, exercises)
+- Historical timeline of ISS achievements
+- Bilingual content (Arabic/English)
+- Interactive table of contents
 
-📅 Historical Timeline
-Curated timeline of 25 years of ISS achievements
+### 🎨 User Experience
+- Responsive design for all screen sizes
+- Dark/light theme support
+- Smooth animations and transitions
+- Accessible and user-friendly interface
 
-NASA Image and Video Library integration
+## 🛠️ Built With
 
-Responsive card-based layout with hover effects
+### Frontend Technologies
+- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+- ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)
 
-Automatic content loading from NASA APIs
+### Libraries & Frameworks
+- ![Three.js](https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=three.js&logoColor=white)
+- ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=flat-square&logo=leaflet&logoColor=white)
+- ![Satellite.js](https://img.shields.io/badge/Satellite.js-0081FF?style=flat-square)
 
-👨‍🚀 Life Aboard ISS
-Comprehensive guide to astronaut daily routines
+### APIs & Data Sources
+- NASA APIs (Images and data)
+- Wheretheiss.at (Live tracking)
+- CelesTrak (Orbital data)
+- OpenStreetMap (Maps)
 
-Detailed sections on sleeping, eating, exercise, and hygiene
+## 🚀 Getting Started
 
-Bilingual content with RTL/LTR support
+### Prerequisites
+- A modern web browser (Chrome, Firefox, Safari, Edge)
+- Internet connection for live data
 
-Interactive table of contents for easy navigation
+### Installation
 
-🌐 Bilingual Interface
-Full Arabic/English language support
-
-Automatic text direction adaptation (RTL/LTR)
-
-Cultural-appropriate design elements
-
-Seamless language switching
-
-🛠️ Technologies Used
-Frontend Stack
-HTML5 - Semantic structure and accessibility
-
-CSS3 - Modern styling with Tailwind CSS
-
-JavaScript ES6+ - Interactive functionality
-
-Tailwind CSS - Responsive design framework
-
-Libraries & APIs
-Three.js - 3D graphics and simulations
-
-Leaflet.js - Interactive maps and geospatial data
-
-Satellite.js - Orbital calculations and TLE processing
-
-NASA APIs - Official space data and imagery
-
-Data Sources
-Wheretheiss.at - Real-time ISS positioning
-
-CelesTrak - Two-Line Element (TLE) data
-
-NASA Image Library - Historical photos and videos
-
-OpenStreetMap - Base map layers
-
-🚀 Installation
-Prerequisites
-Modern web browser (Chrome, Firefox, Safari, Edge)
-
-Local server for development (optional but recommended)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/iss-25-explorer.git
